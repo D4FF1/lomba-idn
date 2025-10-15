@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DonasiYuk Sidebar Modern</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+    :root {
+        --color-bg: #1e293b;          /* Sidebar background */
+        --color-bg-hover: #334155;    /* Hover menu */
+        --color-text: #f1f5f9;        /* Text */
+        --color-accent: #6366f1;      /* Active menu & buttons */
+        --color-accent-hover: #4f46e5; /* Button hover */
+        --color-footer: #334155;       /* Footer background */
+    }
+
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        display: flex;
+        min-height: 100vh;
+        background-color: #f1f5f9;
+        color: var(--color-text);
+    }
+
+    /* Sidebar */
+    .sidebar {
+        width: 250px;
+        background-color: var(--color-bg);
+        color: var(--color-text);
+        display: flex;
+        flex-direction: column;
+        padding: 20px 0;
+    }
+
+    .sidebar-header {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .logo-text {
+        font-size: 20px;
+        font-weight: bold;
+        color: var(--color-accent);
+    }
+
+    .user-profile {
+        display: flex;
+        align-items: center;
+        padding: 0 20px;
+        margin-bottom: 20px;
+    }
+
+    .user-avatar {
+        width: 50px;
+        height: 50px;
+        background-color: var(--color-accent);
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 10px;
+        font-weight: bold;
+        font-size: 18px;
+        color: var(--color-text);
+    }
+
+    .menu-section {
+        margin-bottom: 20px;
+    }
+
+    .menu-title {
+        padding: 0 20px;
+        font-size: 12px;
+        text-transform: uppercase;
+        opacity: 0.7;
+        margin-bottom: 5px;
+    }
+
+    .menu-items {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .menu-item {
+        padding: 10px 20px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        cursor: pointer;
+        border-radius: 6px;
+        transition: background 0.2s;
+    }
+
+    .menu-item:hover {
+        background-color: var(--color-bg-hover);
+    }
+
+    .menu-item.active {
+        background-color: var(--color-accent);
+        color: var(--color-text);
+    }
+
+    .menu-icon {
+        width: 20px;
+        text-align: center;
+    }
+
+    .sidebar-footer {
+        margin-top: auto;
+        padding: 20px;
+        text-align: center;
+        background-color: var(--color-footer);
+    }
+
+    .upgrade-btn {
+        background-color: var(--color-accent);
+        border: none;
+        color: var(--color-text);
+        padding: 8px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background 0.2s;
+    }
+
+    .upgrade-btn:hover {
+        background-color: var(--color-accent-hover);
+    }
+</style>
+</head>
+<body>
+
+<div class="sidebar">
+    <div class="sidebar-header">
+        <div class="logo-text">DonasiYuk</div>
+    </div>
+
+    <div class="user-profile">
+        <div class="user-avatar">DN</div>
+        <div>
+            <div>Daffi Nafeeza</div>
+            <div style="font-size:12px; opacity:0.7;">Admin</div>
+        </div>
+    </div>
+
+    <div class="menu-section">
+        <div class="menu-title">Main Menu</div>
+        <ul class="menu-items">
+            <li class="menu-item active">
+                <div class="menu-icon"><i class="fas fa-home"></i></div>
+                <div>Dashboard</div>
+            </li>
+            <li class="menu-item">
+                <div class="menu-icon"><i class="fas fa-hand-holding-usd"></i></div>
+                <div>Semua Campaign</div>
+            </li>
+            <li class="menu-item">
+                <div class="menu-icon"><i class="fas fa-plus-circle"></i></div>
+                <div>Buat Donasi Baru</div>
+            </li>
+            <li class="menu-item">
+                <div class="menu-icon"><i class="fas fa-list"></i></div>
+                <div>Kategori Donasi</div>
+            </li>
+            <li class="menu-item">
+                <div class="menu-icon"><i class="fas fa-heart"></i></div>
+                <div>Donasi Saya</div>
+            </li>
+            <li class="menu-item">
+                <div class="menu-icon"><i class="fas fa-history"></i></div>
+                <div>Riwayat Donasi</div>
+            </li>
+            <li class="menu-item">
+                <div class="menu-icon"><i class="fas fa-crown"></i></div>
+                <div>Top Donatur</div>
+            </li>
+        </ul>
+    </div>
+
+    <div class="menu-section">
+        <div class="menu-title">Tools</div>
+        <ul class="menu-items">
+            <li class="menu-item">
+                <div class="menu-icon"><i class="fas fa-bell"></i></div>
+                <div>Notifikasi</div>
+            </li>
+            <li class="menu-item">
+                <div class="menu-icon"><i class="fas fa-comments"></i></div>
+                <div>Pesan</div>
+            </li>
+            <li class="menu-item">
+                <div class="menu-icon"><i class="fas fa-cog"></i></div>
+                <div>Pengaturan</div>
+            </li>
+            <li class="menu-item">
+                <div class="menu-icon"><i class="fas fa-question-circle"></i></div>
+                <div>Bantuan / FAQ</div>
+            </li>
+        </ul>
+    </div>
+
+    <div class="sidebar-footer">
+        <button class="upgrade-btn">Donasi Sekarang</button>
+    </div>
+</div>
+
+</body>
+</html>
+    

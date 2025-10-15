@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DonasiYuk Dashboard</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="admin.css" />
+</head>
+<body>
+  <div class="sidebar">
+    <div class="sidebar-header">
+      <div class="logo-text">DonasiYuk</div>
+    </div>
+
+    <div class="user-profile">
+      <div class="user-avatar">DN</div>
+      <div class="user-info">
+        <div>Daffi Nafeeza</div>
+        <div>Admin</div>
+      </div>
+    </div>
+
+    <div class="menu-section">
+      <div class="menu-title">Main Menu</div>
+      <ul class="menu-items">
+        <li class="menu-item active" data-page="dashboard">
+          <div class="menu-icon"><i class="fas fa-home"></i></div>
+          <div>Dashboard</div>
+        </li>
+        <li class="menu-item" data-page="campaigns">
+          <div class="menu-icon"><i class="fas fa-hand-holding-heart"></i></div>
+          <div>Semua Campaign</div>
+        </li>
+        <li class="menu-item" data-page="create-donation">
+          <div class="menu-icon"><i class="fas fa-plus-circle"></i></div>
+          <div>Buat Donasi Baru</div>
+        </li>
+        <li class="menu-item" data-page="categories">
+          <div class="menu-icon"><i class="fas fa-tags"></i></div>
+          <div>Kategori Donasi</div>
+        </li>
+        <li class="menu-item" data-page="my-donations">
+          <div class="menu-icon"><i class="fas fa-heart"></i></div>
+          <div>Donasi Saya</div>
+        </li>
+        <li class="menu-item" data-page="history">
+          <div class="menu-icon"><i class="fas fa-history"></i></div>
+          <div>Riwayat Donasi</div>
+        </li>
+        <li class="menu-item" data-page="top-donors">
+          <div class="menu-icon"><i class="fas fa-crown"></i></div>
+          <div>Top Donatur</div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="menu-section">
+      <div class="menu-title">Tools</div>
+      <ul class="menu-items">
+        <li class="menu-item" data-page="notifications">
+          <div class="menu-icon"><i class="fas fa-bell"></i></div>
+          <div>Notifikasi</div>
+        </li>
+        <li class="menu-item" data-page="messages">
+          <div class="menu-icon"><i class="fas fa-comments"></i></div>
+          <div>Pesan</div>
+        </li>
+        <li class="menu-item" data-page="settings">
+          <div class="menu-icon"><i class="fas fa-cog"></i></div>
+          <div>Pengaturan</div>
+        </li>
+        <li class="menu-item" data-page="help">
+          <div class="menu-icon"><i class="fas fa-question-circle"></i></div>
+          <div>Bantuan / FAQ</div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="sidebar-footer">
+      <button class="upgrade-btn">Log Out</button>
+    </div>
+  </div>
+
+  <!-- Dashboard Page -->
+  <div class="dashboard page-content active" id="dashboard">
+    <div class="dashboard-header">
+      <h1>Dashboard</h1>
+      <div>Selamat datang, Admin!</div>
+    </div>
+
+    <!-- Cards Ringkasan -->
+    <div class="cards">
+      <div class="card">
+        <h3>Total Donasi</h3>
+        <p>Rp 25.000.000</p>
+      </div>
+      <div class="card">
+        <h3>Event Aktif</h3>
+        <p>12</p>
+      </div>
+      <div class="card">
+        <h3>Donatur Terdaftar</h3>
+        <p>350</p>
+      </div>
+      <div class="card">
+        <h3>Donasi Selesai</h3>
+        <p>18</p>
+      </div>
+    </div>
+
+    <!-- Proyek Populer -->
+    <div class="projects">
+      <h2>Proyek Populer</h2>
+      <div class="project-item">
+        <div>Pendidikan Anak Yatim</div>
+        <div>Rp 5.000.000</div>
+      </div>
+      <div class="project-item">
+        <div>Bantuan Bencana Alam</div>
+        <div>Rp 7.500.000</div>
+      </div>
+      <div class="project-item">
+        <div>Kesehatan Masyarakat</div>
+        <div>Rp 3.000.000</div>
+      </div>
+    </div>
+
+    <!-- Top Donatur -->
+    <div class="top-donors">
+      <h2>Top Donatur</h2>
+      <div class="donor-item">
+        <div>Ahmad</div>
+        <div>Rp 2.000.000</div>
+      </div>
+      <div class="donor-item">
+        <div>Siti</div>
+        <div>Rp 1.500.000</div>
+      </div>
+      <div class="donor-item">
+        <div>Budi</div>
+        <div>Rp 1.200.000</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Semua Campaign Page -->
+  <div class="dashboard page-content" id="campaigns">
+    <div class="page-header">
+      <h1>Semua Campaign</h1>
+      <button class="btn">Filter</button>
+    </div>
+
+    <div class="campaign-grid">
+      <div class="campaign-card">
+        <div class="campaign-image" style="background-color: #a5b4fc;"></div>
+        <div class="campaign-content">
+          <div class="campaign-title">Pendidikan Anak Yatim</div>
+          <div class="campaign-description">Bantu pendidikan anak yatim untuk masa depan yang lebih baik</div>
+          <div class="campaign-progress">
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 75%"></div>
+            </div>
+            <div class="campaign-stats">
+              <span>Rp 7.500.000</span>
+              <span>75%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="campaign-card">
+        <div class="campaign-image" style="background-color: #fbcfe8;"></div>
+        <div class="campaign-content">
+          <div class="campaign-title">Bantuan Bencana Alam</div>
+          <div class="campaign-description">Bantu korban bencana alam dengan kebutuhan pokok</div>
+          <div class="campaign-progress">
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 60%"></div>
+            </div>
+            <div class="campaign-stats">
+              <span>Rp 6.000.000</span>
+              <span>60%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="campaign-card">
+        <div class="campaign-image" style="background-color: #bbf7d0;"></div>
+        <div class="campaign-content">
+          <div class="campaign-title">Kesehatan Masyarakat</div>
+          <div class="campaign-description">Bantu akses kesehatan untuk masyarakat kurang mampu</div>
+          <div class="campaign-progress">
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 40%"></div>
+            </div>
+            <div class="campaign-stats">
+              <span>Rp 4.000.000</span>
+              <span>40%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Buat Donasi Baru Page -->
+  <div class="dashboard page-content" id="create-donation">
+    <div class="page-header">
+      <h1>Buat Donasi Baru</h1>
+    </div>
+
+    <div class="card">
+      <form>
+        <div class="form-group">
+          <label for="title">Judul Donasi</label>
+          <input type="text" id="title" class="form-control" placeholder="Masukkan judul donasi">
+        </div>
+
+        <div class="form-group">
+          <label for="description">Deskripsi Donasi</label>
+          <textarea id="description" class="form-control" rows="4" placeholder="Jelaskan tujuan dan detail donasi"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="category">Kategori</label>
+          <select id="category" class="form-control">
+            <option value="">Pilih kategori</option>
+            <option value="education">Pendidikan</option>
+            <option value="health">Kesehatan</option>
+            <option value="disaster">Bencana Alam</option>
+            <option value="social">Sosial</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="target">Target Donasi (Rp)</label>
+          <input type="number" id="target" class="form-control" placeholder="Masukkan target donasi">
+        </div>
+
+        <div class="form-group">
+          <label for="deadline">Batas Waktu</label>
+          <input type="date" id="deadline" class="form-control">
+        </div>
+
+        <button type="submit" class="btn">Buat Donasi</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Kategori Donasi Page -->
+  <div class="dashboard page-content" id="categories">
+    <div class="page-header">
+      <h1>Kategori Donasi</h1>
+    </div>
+
+    <div class="category-grid">
+      <div class="category-card">
+        <div class="category-icon"><i class="fas fa-graduation-cap"></i></div>
+        <div class="category-title">Pendidikan</div>
+        <div class="category-count">15 Campaign</div>
+      </div>
+
+      <div class="category-card">
+        <div class="category-icon"><i class="fas fa-heartbeat"></i></div>
+        <div class="category-title">Kesehatan</div>
+        <div class="category-count">12 Campaign</div>
+      </div>
+
+      <div class="category-card">
+        <div class="category-icon"><i class="fas fa-home"></i></div>
+        <div class="category-title">Sosial</div>
+        <div class="category-count">8 Campaign</div>
+      </div>
+
+      <div class="category-card">
+        <div class="category-icon"><i class="fas fa-umbrella"></i></div>
+        <div class="category-title">Bencana Alam</div>
+        <div class="category-count">5 Campaign</div>
+      </div>
+
+      <div class="category-card">
+        <div class="category-icon"><i class="fas fa-leaf"></i></div>
+        <div class="category-title">Lingkungan</div>
+        <div class="category-count">7 Campaign</div>
+      </div>
+
+      <div class="category-card">
+        <div class="category-icon"><i class="fas fa-paw"></i></div>
+        <div class="category-title">Hewan</div>
+        <div class="category-count">3 Campaign</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Donasi Saya Page -->
+  <div class="dashboard page-content" id="my-donations">
+    <div class="page-header">
+      <h1>Donasi Saya</h1>
+    </div>
+
+    <div class="card">
+      <h2>Donasi Aktif</h2>
+      <div class="project-item">
+        <div>Pendidikan Anak Yatim</div>
+        <div>Rp 500.000</div>
+      </div>
+      <div class="project-item">
+        <div>Bantuan Bencana Alam</div>
+        <div>Rp 250.000</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Riwayat Donasi</h2>
+      <div class="project-item">
+        <div>Kesehatan Masyarakat</div>
+        <div>Rp 100.000</div>
+      </div>
+      <div class="project-item">
+        <div>Bantuan Pendidikan</div>
+        <div>Rp 300.000</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Riwayat Donasi Page -->
+  <div class="dashboard page-content" id="history">
+    <div class="page-header">
+      <h1>Riwayat Donasi</h1>
+      <button class="btn">Unduh Laporan</button>
+    </div>
+
+    <div class="card">
+      <table style="width: 100%; border-collapse: collapse;">
+        <thead>
+          <tr style="border-bottom: 1px solid #e2e8f0;">
+            <th style="padding: 12px; text-align: left;">Campaign</th>
+            <th style="padding: 12px; text-align: left;">Tanggal</th>
+            <th style="padding: 12px; text-align: left;">Jumlah</th>
+            <th style="padding: 12px; text-align: left;">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom: 1px solid #e2e8f0;">
+            <td style="padding: 12px;">Pendidikan Anak Yatim</td>
+            <td style="padding: 12px;">15 Mar 2023</td>
+            <td style="padding: 12px;">Rp 500.000</td>
+            <td style="padding: 12px;"><span style="color: #10b981;">Selesai</span></td>
+          </tr>
+          <tr style="border-bottom: 1px solid #e2e8f0;">
+            <td style="padding: 12px;">Bantuan Bencana Alam</td>
+            <td style="padding: 12px;">10 Feb 2023</td>
+            <td style="padding: 12px;">Rp 250.000</td>
+            <td style="padding: 12px;"><span style="color: #10b981;">Selesai</span></td>
+          </tr>
+          <tr style="border-bottom: 1px solid #e2e8f0;">
+            <td style="padding: 12px;">Kesehatan Masyarakat</td>
+            <td style="padding: 12px;">5 Jan 2023</td>
+            <td style="padding: 12px;">Rp 100.000</td>
+            <td style="padding: 12px;"><span style="color: #10b981;">Selesai</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Top Donatur Page -->
+  <div class="dashboard page-content" id="top-donors">
+    <div class="page-header">
+      <h1>Top Donatur</h1>
+    </div>
+
+    <div class="card">
+      <div class="donor-item">
+        <div>
+          <div style="font-weight: 600;">Ahmad</div>
+          <div style="font-size: 14px; color: #64748b;">25 Donasi</div>
+        </div>
+        <div>Rp 2.000.000</div>
+      </div>
+      <div class="donor-item">
+        <div>
+          <div style="font-weight: 600;">Siti</div>
+          <div style="font-size: 14px; color: #64748b;">18 Donasi</div>
+        </div>
+        <div>Rp 1.500.000</div>
+      </div>
+      <div class="donor-item">
+        <div>
+          <div style="font-weight: 600;">Budi</div>
+          <div style="font-size: 14px; color: #64748b;">12 Donasi</div>
+        </div>
+        <div>Rp 1.200.000</div>
+      </div>
+      <div class="donor-item">
+        <div>
+          <div style="font-weight: 600;">Rina</div>
+          <div style="font-size: 14px; color: #64748b;">10 Donasi</div>
+        </div>
+        <div>Rp 900.000</div>
+      </div>
+      <div class="donor-item">
+        <div>
+          <div style="font-weight: 600;">Joko</div>
+          <div style="font-size: 14px; color: #64748b;">8 Donasi</div>
+        </div>
+        <div>Rp 750.000</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Notifikasi Page -->
+  <div class="dashboard page-content" id="notifications">
+    <div class="page-header">
+      <h1>Notifikasi</h1>
+      <button class="btn">Tandai Semua Dibaca</button>
+    </div>
+
+    <div class="notification-item">
+      <div class="notification-icon">
+        <i class="fas fa-bell"></i>
+      </div>
+      <div class="notification-content">
+        <div class="notification-title">Donasi Anda Berhasil</div>
+        <div class="notification-description">Donasi untuk campaign Pendidikan Anak Yatim telah berhasil diproses</div>
+        <div class="notification-time">2 jam yang lalu</div>
+      </div>
+    </div>
+
+    <div class="notification-item">
+      <div class="notification-icon">
+        <i class="fas fa-heart"></i>
+      </div>
+      <div class="notification-content">
+        <div class="notification-title">Campaign Baru</div>
+        <div class="notification-description">Campaign baru "Bantuan Pendidikan" telah tersedia</div>
+        <div class="notification-time">1 hari yang lalu</div>
+      </div>
+    </div>
+
+    <div class="notification-item">
+      <div class="notification-icon">
+        <i class="fas fa-check-circle"></i>
+      </div>
+      <div class="notification-content">
+        <div class="notification-title">Campaign Selesai</div>
+        <div class="notification-description">Campaign "Bantuan Bencana Alam" telah mencapai target</div>
+        <div class="notification-time">3 hari yang lalu</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pesan Page -->
+  <div class="dashboard page-content" id="messages">
+    <div class="page-header">
+      <h1>Pesan</h1>
+    </div>
+
+    <div class="message-item">
+      <div class="message-avatar">AN</div>
+      <div class="message-content">
+        <div class="message-sender">Admin DonasiYuk</div>
+        <div class="message-preview">Terima kasih atas donasi Anda untuk campaign Pendidikan Anak Yatim...</div>
+      </div>
+      <div class="message-time">2 jam lalu</div>
+    </div>
+
+    <div class="message-item">
+      <div class="message-avatar">TS</div>
+      <div class="message-content">
+        <div class="message-sender">Tim Sosial</div>
+        <div class="message-preview">Update terbaru tentang campaign Bantuan Bencana Alam...</div>
+      </div>
+      <div class="message-time">1 hari lalu</div>
+    </div>
+
+    <div class="message-item">
+      <div class="message-avatar">DK</div>
+      <div class="message-content">
+        <div class="message-sender">Donatur Komunitas</div>
+        <div class="message-preview">Halo, kami ingin mengajak Anda bergabung dalam acara amal...</div>
+      </div>
+      <div class="message-time">3 hari lalu</div>
+    </div>
+  </div>
+
+  <!-- Pengaturan Page -->
+  <div class="dashboard page-content" id="settings">
+    <div class="page-header">
+      <h1>Pengaturan</h1>
+    </div>
+
+    <div class="settings-section">
+      <h3>Profil</h3>
+      <div class="form-group">
+        <label for="name">Nama Lengkap</label>
+        <input type="text" id="name" class="form-control" value="Daffi Nafeeza">
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" class="form-control" value="daffi@example.com">
+      </div>
+      <div class="form-group">
+        <label for="phone">Nomor Telepon</label>
+        <input type="tel" id="phone" class="form-control" value="08123456789">
+      </div>
+      <button class="btn">Simpan Perubahan</button>
+    </div>
+
+    <div class="settings-section">
+      <h3>Notifikasi</h3>
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+        <span>Notifikasi Email</span>
+        <input type="checkbox" checked>
+      </div>
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+        <span>Notifikasi Campaign Baru</span>
+        <input type="checkbox" checked>
+      </div>
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <span>Notifikasi Pembaruan</span>
+        <input type="checkbox">
+      </div>
+    </div>
+
+    <div class="settings-section">
+      <h3>Keamanan</h3>
+      <button class="btn">Ubah Kata Sandi</button>
+    </div>
+  </div>
+
+  <!-- Bantuan / FAQ Page -->
+  <div class="dashboard page-content" id="help">
+    <div class="page-header">
+      <h1>Bantuan / FAQ</h1>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">Bagaimana cara melakukan donasi?</div>
+      <div class="faq-answer">Pilih campaign yang ingin Anda dukung, klik tombol "Donasi Sekarang", masukkan jumlah donasi, dan ikuti langkah-langkah pembayaran.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">Apakah donasi saya aman?</div>
+      <div class="faq-answer">Ya, kami menggunakan sistem keamanan terenkripsi untuk melindungi informasi dan transaksi Anda.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">Bagaimana cara melacak donasi saya?</div>
+      <div class="faq-answer">Anda dapat melacak donasi Anda di halaman "Donasi Saya" yang berisi riwayat dan status donasi.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">Apakah saya bisa membatalkan donasi?</div>
+      <div class="faq-answer">Donasi yang sudah diproses tidak dapat dibatalkan. Namun, jika terjadi kesalahan, silakan hubungi tim support kami.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">Bagaimana cara membuat campaign donasi?</div>
+      <div class="faq-answer">Klik menu "Buat Donasi Baru", isi formulir yang disediakan, dan kirim untuk ditinjau oleh tim kami.</div>
+    </div>
+  </div>
+
+  <script>
+    // Navigation functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const menuItems = document.querySelectorAll('.menu-item');
+      const pageContents = document.querySelectorAll('.page-content');
+      
+      menuItems.forEach(item => {
+        item.addEventListener('click', function() {
+          // Remove active class from all menu items
+          menuItems.forEach(i => i.classList.remove('active'));
+          
+          // Add active class to clicked menu item
+          this.classList.add('active');
+          
+          // Hide all page contents
+          pageContents.forEach(page => page.classList.remove('active'));
+          
+          // Show the selected page content
+          const pageId = this.getAttribute('data-page');
+          document.getElementById(pageId).classList.add('active');
+        });
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,170 +1,270 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DonasiYuk Navbar User</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-<style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DonasiYuk - Navbar User</title>
+  <!-- Google Font: Inter -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style>
     :root {
-        --color-bg: #1e293b;
-        --color-bg-hover: #334155;
-        --color-text: #f1f5f9;
-        --color-accent: #6366f1;
-        --color-accent-hover: #4f46e5;
-        --color-shadow: rgba(0,0,0,0.2);
+      --color-bg: #1e293b;
+      --color-bg-dark: #0f172a;
+      --color-bg-hover: #334155;
+      --color-text: #f1f5f9;
+      --color-accent: #6366f1;
+      --color-accent-hover: #4f46e5;
+      --color-shadow: rgba(0, 0, 0, 0.25);
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
     body {
-        margin: 0;
-        font-family: Arial, sans-serif;
-        background-color: #f1f5f9;
+      font-family: 'Inter', sans-serif;
+      background-color: #f8fafc;
+      color: #1e293b;
     }
 
     /* Navbar */
     .navbar {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        background: linear-gradient(90deg, var(--color-bg), #0f172a);
-        color: var(--color-text);
-        padding: 10px 20px;
-        position: sticky;
-        top: 0;
-        z-index: 100;
-        box-shadow: 0 2px 8px var(--color-shadow);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: linear-gradient(90deg, var(--color-bg), var(--color-bg-dark));
+      color: var(--color-text);
+      padding: 14px 24px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 12px var(--color-shadow);
+      backdrop-filter: blur(10px); /* Glass effect (optional) */
+      -webkit-backdrop-filter: blur(10px);
     }
 
     .navbar-logo {
-        font-size: 22px;
-        font-weight: bold;
-        color: var(--color-accent);
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--color-accent);
+      letter-spacing: -0.5px;
     }
 
     .navbar-menu {
-        display: flex;
-        gap: 15px;
+      display: flex;
+      gap: 12px;
     }
 
     .navbar-menu a {
-        color: var(--color-text);
-        text-decoration: none;
-        padding: 8px 12px;
-        border-radius: 8px;
-        transition: all 0.3s ease;
+      color: var(--color-text);
+      text-decoration: none;
+      padding: 10px 16px;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 15px;
+      position: relative;
+      transition: var(--transition);
+    }
+
+    .navbar-menu a::after {
+      content: '';
+      position: absolute;
+      bottom: 8px;
+      left: 16px;
+      right: 16px;
+      height: 2px;
+      background: var(--color-accent);
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
     }
 
     .navbar-menu a:hover {
-        background-color: var(--color-bg-hover);
+      background-color: var(--color-bg-hover);
+    }
+
+    .navbar-menu a:hover::after,
+    .navbar-menu a.active::after {
+      transform: scaleX(1);
     }
 
     .navbar-menu a.active {
-        background-color: var(--color-accent);
-        color: var(--color-text);
+      background-color: rgba(99, 102, 241, 0.15);
     }
 
     .navbar-profile {
-        display: flex;
-        align-items: center;
-        gap: 10px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
     }
 
     .user-avatar {
-        width: 40px;
-        height: 40px;
-        background-color: var(--color-accent);
-        border-radius: 50%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-weight: bold;
-        font-size: 16px;
-        color: var(--color-text);
-        box-shadow: 0 2px 6px var(--color-shadow);
+      width: 44px;
+      height: 44px;
+      background: linear-gradient(135deg, var(--color-accent), var(--color-accent-hover));
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: 700;
+      font-size: 16px;
+      color: white;
+      box-shadow: 0 4px 8px rgba(99, 102, 241, 0.3);
+      transition: var(--transition);
     }
 
-    /* Hamburger menu for mobile */
+    .user-avatar:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 12px rgba(99, 102, 241, 0.4);
+    }
+
+    .navbar-profile span {
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    /* Hamburger */
     .hamburger {
-        display: none;
-        flex-direction: column;
-        cursor: pointer;
-        gap: 5px;
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      padding: 6px;
+      border-radius: 6px;
+      transition: var(--transition);
+    }
+
+    .hamburger:hover {
+      background-color: var(--color-bg-hover);
     }
 
     .hamburger div {
-        width: 25px;
-        height: 3px;
-        background-color: var(--color-text);
-        border-radius: 2px;
-        transition: 0.3s;
+      width: 26px;
+      height: 3px;
+      background-color: var(--color-text);
+      border-radius: 2px;
+      transition: var(--transition);
     }
 
+    .hamburger div:nth-child(1) {
+      transform-origin: top left;
+    }
+    .hamburger div:nth-child(3) {
+      transform-origin: bottom left;
+    }
+
+    .hamburger.active div:nth-child(1) {
+      transform: rotate(45deg) translate(6px, 6px);
+    }
+    .hamburger.active div:nth-child(2) {
+      opacity: 0;
+    }
+    .hamburger.active div:nth-child(3) {
+      transform: rotate(-45deg) translate(6px, -6px);
+    }
+
+    /* Mobile Menu */
     @media screen and (max-width: 768px) {
-        .navbar-menu {
-            display: none;
-            position: absolute;
-            top: 60px;
-            left: 0;
-            right: 0;
-            background-color: var(--color-bg);
-            flex-direction: column;
-            gap: 0;
-        }
+      .navbar-menu {
+        display: none;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background: var(--color-bg);
+        flex-direction: column;
+        padding: 12px 0;
+        gap: 0;
+        box-shadow: 0 6px 16px var(--color-shadow);
+        animation: slideDown 0.3s ease forwards;
+      }
 
-        .navbar-menu.show {
-            display: flex;
+      @keyframes slideDown {
+        from {
+          opacity: 0;
+          transform: translateY(-10px);
         }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
 
-        .navbar-menu a {
-            padding: 12px 20px;
-            border-bottom: 1px solid var(--color-bg-hover);
-        }
+      .navbar-menu.show {
+        display: flex;
+      }
 
-        .hamburger {
-            display: flex;
-        }
+      .navbar-menu a {
+        padding: 14px 24px;
+        border-bottom: 1px solid var(--color-bg-hover);
+        border-radius: 0;
+      }
+
+      .navbar-menu a:last-child {
+        border-bottom: none;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .navbar-profile span {
+        display: none; /* Sembunyikan nama di mobile */
+      }
     }
-</style>
+  </style>
 </head>
 <body>
-
-<nav class="navbar">
+  <nav class="navbar">
     <div class="navbar-logo">DonasiYuk</div>
-    
+
     <div class="hamburger" id="hamburger">
-        <div></div>
-        <div></div>
-        <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
     </div>
 
     <div class="navbar-menu" id="navbarMenu">
-        <a href="#" class="active">Dashboard</a>
-        <a href="#">Semua Campaign</a>
-        <a href="#">Buat Donasi</a>
-        <a href="#">Kategori Donasi</a>
-        <a href="#">Donasi Saya</a>
+      <a href="#" class="active">Dashboard</a>
+      <a href="#">Semua Campaign</a>
+      <a href="#">Buat Donasi</a>
+      <a href="#">Kategori Donasi</a>
+      <a href="#">Donasi Saya</a>
     </div>
 
     <div class="navbar-profile">
-        <div class="user-avatar">DN</div>
-        <div style="font-size:14px;">Daffi</div>
+      <div class="user-avatar">DN</div>
+      <span>Daffi</span>
     </div>
-</nav>
+  </nav>
 
-<!-- Content -->
-<div style="padding:20px;">
-    <h2>Selamat datang di DonasiYuk!</h2>
-    <p>Di sini kamu bisa melihat campaign donasi, membuat donasi baru, dan mengatur akunmu.</p>
-</div>
+  <!-- Content -->
+  <div style="padding: 30px;">
+    <h2 style="font-size: 28px; margin-bottom: 12px;">Selamat datang di DonasiYuk!</h2>
+    <p style="font-size: 16px; color: #475569; line-height: 1.6;">
+      Di sini kamu bisa melihat campaign donasi, membuat donasi baru, dan mengatur akunmu.
+    </p>
+  </div>
 
-<script>
+  <script>
     const hamburger = document.getElementById('hamburger');
     const navbarMenu = document.getElementById('navbarMenu');
 
     hamburger.addEventListener('click', () => {
-        navbarMenu.classList.toggle('show');
+      hamburger.classList.toggle('active');
+      navbarMenu.classList.toggle('show');
     });
-</script>
 
+    // Tutup menu saat klik di luar
+    document.addEventListener('click', (e) => {
+      if (!navbarMenu.contains(e.target) && !hamburger.contains(e.target)) {
+        hamburger.classList.remove('active');
+        navbarMenu.classList.remove('show');
+      }
+    });
+  </script>
 </body>
 </html>

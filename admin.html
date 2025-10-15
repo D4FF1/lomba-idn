@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DonasiYuk Sidebar Modern</title>
+  <title>DonasiYuk Dashboard</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
   <style>
     :root {
       --color-bg: #1e293b;
       --color-bg-hover: #334155;
       --color-text: #f1f5f9;
-      --color-accent: #818cf8; /* Lebih lembut & modern */
+      --color-accent: #818cf8;
       --color-accent-hover: #6366f1;
       --color-footer: #334155;
       --transition: all 0.3s ease;
@@ -24,12 +24,11 @@
     }
 
     body {
-      margin: 0;
       font-family: 'Segoe UI', system-ui, sans-serif;
       display: flex;
       min-height: 100vh;
       background-color: #f8fafc;
-      color: var(--color-text);
+      color: #1e293b;
     }
 
     /* Sidebar */
@@ -175,11 +174,91 @@
       box-shadow: 0 6px 14px rgba(99, 102, 241, 0.5);
     }
 
-    /* Optional: Smooth scroll & focus styles */
-    .menu-item:focus,
-    .upgrade-btn:focus {
-      outline: none;
+    /* Dashboard */
+    .dashboard {
+      flex: 1;
+      padding: 24px;
+      overflow-y: auto;
+      background-color: #f8fafc;
     }
+
+    .dashboard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+
+    .dashboard-header h1 {
+      font-size: 24px;
+      color: #1e293b;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+
+    .card h3 {
+      font-size: 14px;
+      color: #64748b;
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      font-size: 18px;
+      font-weight: 600;
+      color: #1e293b;
+    }
+
+    .projects, .top-donors {
+      margin-bottom: 30px;
+    }
+
+    .projects h2, .top-donors h2 {
+      margin-bottom: 16px;
+      font-size: 18px;
+      color: #1e293b;
+    }
+
+    .project-item, .donor-item {
+      background: white;
+      padding: 16px;
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+      margin-bottom: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: var(--transition);
+    }
+
+    .project-item:hover, .donor-item:hover {
+      transform: translateY(-2px);
+    }
+
+    /* Responsive */
+    @media(max-width: 900px) {
+      .dashboard-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
+      .cards {
+        grid-template-columns: 1fr;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -254,6 +333,67 @@
 
     <div class="sidebar-footer">
       <button class="upgrade-btn">Donasi Sekarang</button>
+    </div>
+  </div>
+
+  <div class="dashboard">
+    <div class="dashboard-header">
+      <h1>Dashboard</h1>
+      <div>Selamat datang, Daffi!</div>
+    </div>
+
+    <!-- Cards Ringkasan -->
+    <div class="cards">
+      <div class="card">
+        <h3>Total Donasi</h3>
+        <p>Rp 25.000.000</p>
+      </div>
+      <div class="card">
+        <h3>Proyek Aktif</h3>
+        <p>12</p>
+      </div>
+      <div class="card">
+        <h3>Donatur Terdaftar</h3>
+        <p>350</p>
+      </div>
+      <div class="card">
+        <h3>Proyek Selesai</h3>
+        <p>18</p>
+      </div>
+    </div>
+
+    <!-- Proyek Populer -->
+    <div class="projects">
+      <h2>Proyek Populer</h2>
+      <div class="project-item">
+        <div>Pendidikan Anak Yatim</div>
+        <div>Rp 5.000.000</div>
+      </div>
+      <div class="project-item">
+        <div>Bantuan Bencana Alam</div>
+        <div>Rp 7.500.000</div>
+      </div>
+      <div class="project-item">
+        <div>Kesehatan Masyarakat</div>
+        <div>Rp 3.000.000</div>
+      </div>
+    </div>
+
+    <!-- Top Donatur -->
+    <div class="top-donors">
+      <h2>Top Donatur</h2>
+      <div class="donor-item">
+        <div>Ahmad</div>
+        <div>Rp 2.000.000</div>
+      </div>
+      <div class="donor-item">
+        <div>Siti</div>
+        <div>Rp 1.500.000</div>
+      </div>
+      <div class="donor-item">
+        <div>Budi</div>
+        <div>Rp 1.200.000</div>
+      </div>
     </div>
   </div>
 </body>

@@ -215,6 +215,169 @@
         display: none; /* Sembunyikan nama di mobile */
       }
     }
+
+    /* Carousel Styles */
+    .carousel {
+      position: relative;
+      width: 100%;
+      height: 500px;
+      overflow: hidden;
+      margin: 0 auto;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .carousel-inner {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+      height: 100%;
+    }
+
+    .carousel-slide {
+      min-width: 100%;
+      height: 100%;
+      position: relative;
+    }
+
+    .carousel-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .slide-content {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+      color: white;
+      padding: 30px;
+      padding-top: 60px;
+    }
+
+    .slide-content h2 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+
+    .slide-content p {
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+      max-width: 600px;
+    }
+
+    .btn-donate {
+      display: inline-block;
+      background: var(--color-accent);
+      color: white;
+      padding: 12px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: var(--transition);
+    }
+
+    .btn-donate:hover {
+      background: var(--color-accent-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+    }
+
+    .carousel-controls {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      transform: translateY(-50%);
+      padding: 0 20px;
+      z-index: 10;
+    }
+
+    .carousel-control {
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      border: none;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: var(--transition);
+      backdrop-filter: blur(5px);
+    }
+
+    .carousel-control:hover {
+      background: rgba(255, 255, 255, 0.3);
+      transform: scale(1.1);
+    }
+
+    .carousel-indicators {
+      position: absolute;
+      bottom: 20px;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      z-index: 10;
+    }
+
+    .indicator {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.5);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .indicator.active {
+      background: white;
+      transform: scale(1.2);
+    }
+
+    /* Responsive adjustments */
+    @media screen and (max-width: 768px) {
+      .carousel {
+        height: 400px;
+      }
+      
+      .slide-content h2 {
+        font-size: 1.5rem;
+      }
+      
+      .slide-content p {
+        font-size: 1rem;
+      }
+      
+      .carousel-control {
+        width: 40px;
+        height: 40px;
+      }
+    }
+
+    @media screen and (max-width: 480px) {
+      .carousel {
+        height: 300px;
+      }
+      
+      .slide-content {
+        padding: 20px;
+        padding-top: 40px;
+      }
+      
+      .slide-content h2 {
+        font-size: 1.3rem;
+      }
+      
+      .slide-content p {
+        font-size: 0.9rem;
+      }
+    }
   </style>
 </head>
 <body>
@@ -241,15 +404,63 @@
     </div>
   </nav>
 
-  <!-- Content -->
-  <div style="padding: 30px;">
-    <h2 style="font-size: 28px; margin-bottom: 12px;">Selamat datang di DonasiYuk!</h2>
-    <p style="font-size: 16px; color: #475569; line-height: 1.6;">
-      Di sini kamu bisa melihat campaign donasi, membuat donasi baru, dan mengatur akunmu.
-    </p>
-  </div>
+  <!-- Carousel Section -->
+  <section class="carousel-container">
+    <div class="carousel" id="carousel">
+      <div class="carousel-inner" id="carouselInner">
+        <!-- Slide 1 -->
+        <div class="carousel-slide">
+          <!-- Ganti dengan gambar Anda -->
+          <div style="width:100%;height:100%;background:linear-gradient(135deg, #667eea 0%, #764ba2 100%);"></div>
+          <div class="slide-content">
+            <h2>Bantu Pendidikan Anak Indonesia</h2>
+            <p>Bantu anak-anak Indonesia mendapatkan akses pendidikan yang layak untuk masa depan yang lebih cerah.</p>
+            <a href="#" class="btn-donate">Donasi Sekarang</a>
+          </div>
+        </div>
+        
+        <!-- Slide 2 -->
+        <div class="carousel-slide">
+          <!-- Ganti dengan gambar Anda -->
+          <div style="width:100%;height:100%;background:linear-gradient(135deg, #f093fb 0%, #f5576c 100%);"></div>
+          <div class="slide-content">
+            <h2>Bantuan untuk Korban Bencana Alam</h2>
+            <p>Berikan bantuan kepada saudara kita yang terdampak bencana alam di berbagai daerah di Indonesia.</p>
+            <a href="#" class="btn-donate">Donasi Sekarang</a>
+          </div>
+        </div>
+        
+        <!-- Slide 3 -->
+        <div class="carousel-slide">
+          <!-- Ganti dengan gambar Anda -->
+          <div style="width:100%;height:100%;background:linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);"></div>
+          <div class="slide-content">
+            <h2>Dukung Kesehatan Ibu dan Anak</h2>
+            <p>Bantu ibu hamil dan anak-anak mendapatkan akses layanan kesehatan yang berkualitas.</p>
+            <a href="#" class="btn-donate">Donasi Sekarang</a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Controls -->
+      <div class="carousel-controls">
+        <button class="carousel-control" id="prevBtn">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        <button class="carousel-control" id="nextBtn">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+      </div>
+      
+      <!-- Indicators -->
+      <div class="carousel-indicators" id="indicators">
+        <!-- Indicators akan di-generate oleh JavaScript -->
+      </div>
+    </div>
+  </section>
 
   <script>
+    // Navbar functionality
     const hamburger = document.getElementById('hamburger');
     const navbarMenu = document.getElementById('navbarMenu');
 
@@ -265,6 +476,106 @@
         navbarMenu.classList.remove('show');
       }
     });
+
+    // Carousel functionality
+    const carouselInner = document.getElementById('carouselInner');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const indicatorsContainer = document.getElementById('indicators');
+    
+    let currentSlide = 0;
+    let slideInterval;
+    const slides = document.querySelectorAll('.carousel-slide');
+    const totalSlides = slides.length;
+    
+    // Create indicators
+    slides.forEach((_, index) => {
+      const indicator = document.createElement('div');
+      indicator.classList.add('indicator');
+      if (index === 0) indicator.classList.add('active');
+      indicator.addEventListener('click', () => goToSlide(index));
+      indicatorsContainer.appendChild(indicator);
+    });
+    
+    const indicators = document.querySelectorAll('.indicator');
+    
+    // Function to go to specific slide
+    function goToSlide(slideIndex) {
+      currentSlide = slideIndex;
+      updateCarousel();
+    }
+    
+    // Function to update carousel
+    function updateCarousel() {
+      carouselInner.style.transform = `translateX(-${currentSlide * 100}%)`;
+      
+      // Update indicators
+      indicators.forEach((indicator, index) => {
+        if (index === currentSlide) {
+          indicator.classList.add('active');
+        } else {
+          indicator.classList.remove('active');
+        }
+      });
+    }
+    
+    // Next slide function
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % totalSlides;
+      updateCarousel();
+    }
+    
+    // Previous slide function
+    function prevSlide() {
+      currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+      updateCarousel();
+    }
+    
+    // Event listeners for buttons
+    nextBtn.addEventListener('click', nextSlide);
+    prevBtn.addEventListener('click', prevSlide);
+    
+    // Auto slide
+    function startAutoSlide() {
+      slideInterval = setInterval(nextSlide, 5000);
+    }
+    
+    function stopAutoSlide() {
+      clearInterval(slideInterval);
+    }
+    
+    // Start auto slide on load
+    startAutoSlide();
+    
+    // Pause auto slide on hover
+    const carousel = document.getElementById('carousel');
+    carousel.addEventListener('mouseenter', stopAutoSlide);
+    carousel.addEventListener('mouseleave', startAutoSlide);
+    
+    // Touch support for mobile
+    let startX = 0;
+    let endX = 0;
+    
+    carousel.addEventListener('touchstart', (e) => {
+      startX = e.touches[0].clientX;
+    });
+    
+    carousel.addEventListener('touchend', (e) => {
+      endX = e.changedTouches[0].clientX;
+      handleSwipe();
+    });
+    
+    function handleSwipe() {
+      const swipeThreshold = 50;
+      
+      if (startX - endX > swipeThreshold) {
+        // Swipe left - next slide
+        nextSlide();
+      } else if (endX - startX > swipeThreshold) {
+        // Swipe right - previous slide
+        prevSlide();
+      }
+    }
   </script>
 </body>
 </html>

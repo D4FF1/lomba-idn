@@ -241,7 +241,9 @@
     .carousel-slide img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
     }
 
     .slide-content {
@@ -249,7 +251,7 @@
       bottom: 0;
       left: 0;
       right: 0;
-      background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.2), transparent);
       color: white;
       padding: 30px;
       padding-top: 60px;
@@ -521,10 +523,8 @@
         <!-- Slide 1 -->
         <div class="carousel-slide">
           <!-- Ganti dengan gambar Anda -->
-          <div style="width:100%;height:100%;background:linear-gradient(135deg, #667eea 0%, #764ba2 100%);"></div>
+          <div style="width:100%;height:100%;background:linear-gradient(135deg, #667eea 0%, #764ba2 100%);"><img src="assets/user/1.png" alt=""></div>
           <div class="slide-content">
-            <h2>Bantu Pendidikan Anak Indonesia</h2>
-            <p>Bantu anak-anak Indonesia mendapatkan akses pendidikan yang layak untuk masa depan yang lebih cerah.</p>
             <a href="#" class="btn-donate">Donasi Sekarang</a>
           </div>
         </div>

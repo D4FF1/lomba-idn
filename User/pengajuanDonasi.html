@@ -75,6 +75,18 @@
       background-color: #059669;
     }
 
+    input[type="button"] {
+      background-color: #ef4444;
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    input[type="button"]:hover {
+      background-color: #dc2626;
+    }
+    
     .footer {
       text-align: center;
       margin-top: 20px;
@@ -122,6 +134,7 @@
       <textarea id="message" name="message" rows="4"></textarea>
 
       <input type="submit" value="Ajukan Donasi" />
+      <input type="button" value="Keluar" onclick="window.location.href='index.html'" />
     </form>
 
     <div class="footer">

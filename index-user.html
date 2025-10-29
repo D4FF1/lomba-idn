@@ -501,17 +501,16 @@
       <div></div>
       <div></div>
     </div>
-
     <div class="navbar-menu" id="navbarMenu">
       <a href="#" class="active">Dashboard</a>
       <a href="#semua-campaign">Semua Campaign</a>
-      <a href="#kategori-donasi">Kategori Donasi</a> <!-- Updated link -->
+      <a href="#kategori-donasi">Kategori Donasi</a>
       <a href="pengajuanDonasi.html">Pengajuan Donasi</a>
+      <a href="#" onclick="logout(); return false;" style="color: black;">Logout</a>
     </div>
-
     <div class="navbar-profile">
       <div class="user-avatar">DN</div>
-      <span>Daffi</span>
+      <span id="nama-user">Daffi</span>
     </div>
   </nav>
 
@@ -829,6 +828,13 @@
   </section>
 
   <script>
+
+  function logout() {
+    if (confirm('Apakah Anda yakin ingin logout?')) {
+      localStorage.removeItem('currentUser');
+      window.location.href = 'login.html';
+    }
+  }
     // Navbar functionality
     const hamburger = document.getElementById('hamburger');
     const navbarMenu = document.getElementById('navbarMenu');
@@ -945,6 +951,44 @@
         prevSlide();
       }
     }
+
+  // Ambil data pengguna yang sedang login
+  const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+
+  if (!currentUser) {
+    // Jika tidak ada sesi login, arahkan ke login
+    alert('Silakan login terlebih dahulu.');
+    window.location.href = 'login.html';
+  } else {
+    const name = currentUser.name; // asumsi field 'name' disimpan saat registrasi
+
+    // Tampilkan nama lengkap
+    document.getElementById('nama-user').textContent = name;
+
+    // Buat inisial: ambil huruf pertama dari setiap kata (maks 2 huruf)
+    const words = name.trim().split(' ');
+    let initials = '';
+    for (let i = 0; i < Math.min(words.length, 2); i++) {
+      if (words[i].length > 0) {
+        initials += words[i][0].toUpperCase();
+      }
+    }
+    // Jika hanya satu kata, ulang huruf pertama (misal: "Daffi" → "DD")
+    if (initials.length === 1) {
+      initials += initials;
+    } else if (initials.length === 0) {
+      initials = '??';
+    }
+
+    document.getElementById('user-initials').textContent = initials;
+  }
+
+  // Fungsi logout (opsional)
+  function logout() {
+    localStorage.removeItem('currentUser');
+    window.location.href = 'login.html';
+  }
+    
   </script>
 </body>
 </html>

@@ -3,21 +3,30 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DonasiYuk - Navbar User</title>
+  <title>DonasiYuk - Platform Donasi Digital</title>
+  <link rel="icon" href="assets/user/campaign/hand-holding-heart-solid.svg">
   <!-- Google Font: Inter -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
   <style>
     :root {
-      --color-bg: rgb(255, 255, 255);
-      --color-bg-hover: #10b981;
-      --color-text: black;
-      --color-accent: #10b981; /* hijau emerald */
-      --color-accent-hover: #059669; /* hijau lebih gelap */
+      --color-bg: #ffffff;
+      --color-bg-secondary: #f8fafc;
+      --color-bg-hover: rgba(16, 185, 129, 0.1);
+      --color-text: #1e293b;
+      --color-text-light: #64748b;
+      --color-accent: #10b981;
+      --color-accent-hover: #059669;
+      --color-accent-light: rgba(16, 185, 129, 0.1);
       --color-footer: #334155;
+      --color-border: #e2e8f0;
       --transition: all 0.3s ease;
       --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      --border-radius: 12px;
+      --border-radius-sm: 8px;
     }
 
     * {
@@ -28,8 +37,9 @@
 
     body {
       font-family: 'Inter', sans-serif;
-      background-color: #f8fafc;
-      color: #1e293b;
+      background-color: var(--color-bg-secondary);
+      color: var(--color-text);
+      line-height: 1.6;
     }
 
     /* Navbar */
@@ -37,15 +47,16 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      background: linear-gradient(90deg, var(--color-bg), var(--color-bg-dark));
+      background-color: var(--color-bg);
       color: var(--color-text);
-      padding: 14px 24px;
+      padding: 16px 24px;
       position: sticky;
       top: 0;
       z-index: 1000;
-      box-shadow: 0 4px 12px var(--color-shadow);
-      backdrop-filter: blur(10px); /* Glass effect (optional) */
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--color-border);
     }
 
     .navbar-logo {
@@ -53,22 +64,36 @@
       font-weight: 700;
       color: var(--color-accent);
       letter-spacing: -0.5px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .navbar-logo i {
+      font-size: 22px;
     }
 
     .navbar-menu {
       display: flex;
-      gap: 12px;
+      gap: 4px;
     }
 
     .navbar-menu a {
       color: var(--color-text);
       text-decoration: none;
       padding: 10px 16px;
-      border-radius: 10px;
-      font-weight: 600;
+      border-radius: var(--border-radius-sm);
+      font-weight: 500;
       font-size: 15px;
       position: relative;
       transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .navbar-menu a i {
+      font-size: 14px;
     }
 
     .navbar-menu a::after {
@@ -85,6 +110,7 @@
 
     .navbar-menu a:hover {
       background-color: var(--color-bg-hover);
+      color: var(--color-accent);
     }
 
     .navbar-menu a:hover::after,
@@ -94,6 +120,7 @@
 
     .navbar-menu a.active {
       background-color: var(--color-bg-hover);
+      color: var(--color-accent);
     }
 
     .navbar-profile {
@@ -113,13 +140,14 @@
       font-weight: 700;
       font-size: 16px;
       color: white;
-      box-shadow: 0 4px 8px rgba(99, 102, 241, 0.3);
+      box-shadow: 0 4px 8px rgba(16, 185, 129, 0.3);
       transition: var(--transition);
+      cursor: pointer;
     }
 
     .user-avatar:hover {
       transform: scale(1.05);
-      box-shadow: 0 6px 12px rgba(99, 102, 241, 0.4);
+      box-shadow: 0 6px 12px rgba(16, 185, 129, 0.4);
     }
 
     .navbar-profile span {
@@ -132,9 +160,10 @@
       display: none;
       flex-direction: column;
       cursor: pointer;
-      padding: 6px;
-      border-radius: 6px;
+      padding: 8px;
+      border-radius: var(--border-radius-sm);
       transition: var(--transition);
+      gap: 4px;
     }
 
     .hamburger:hover {
@@ -178,8 +207,9 @@
         flex-direction: column;
         padding: 12px 0;
         gap: 0;
-        box-shadow: 0 6px 16px var(--color-shadow);
+        box-shadow: var(--shadow-lg);
         animation: slideDown 0.3s ease forwards;
+        border-top: 1px solid var(--color-border);
       }
 
       @keyframes slideDown {
@@ -199,7 +229,7 @@
 
       .navbar-menu a {
         padding: 14px 24px;
-        border-bottom: 1px solid var(--color-bg-hover);
+        border-bottom: 1px solid var(--color-border);
         border-radius: 0;
       }
 
@@ -212,18 +242,269 @@
       }
 
       .navbar-profile span {
-        display: none; /* Sembunyikan nama di mobile */
+        display: none;
       }
     }
 
-    /* Carousel Styles */
+    /* Center all sections */
+    .section-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .donation-section {
+      margin-top: 60px;
+      width: 100%;
+    }
+
+    /* Center section headers */
+    .section-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 24px;
+      width: 100%;
+    }
+
+    .section-title {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--color-text);
+      position: relative;
+      padding-bottom: 8px;
+      margin-bottom: 16px;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      background: var(--color-accent);
+      border-radius: 2px;
+    }
+
+    .view-all {
+      color: var(--color-accent);
+      text-decoration: none;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: var(--transition);
+    }
+
+    .view-all:hover {
+      color: var(--color-accent-hover);
+      gap: 8px;
+    }
+
+    /* Center donation cards */
+    .donation-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 24px;
+      width: 100%;
+      justify-items: center;
+    }
+
+    /* Card Styles */
+    .donation-card {
+      background: white;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: var(--transition);
+      border: 1px solid var(--color-border);
+      max-width: 380px;
+      width: 100%;
+    }
+
+    .donation-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-xl);
+    }
+
+    .donation-img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      transition: var(--transition);
+    }
+
+    .donation-card:hover .donation-img {
+      transform: scale(1.05);
+    }
+
+    .donation-body {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      flex-grow: 1;
+    }
+
+    .donation-body h3 {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--color-text);
+      line-height: 1.4;
+    }
+
+    .progress-container {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .progress-info {
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+      color: var(--color-text-light);
+    }
+
+    .progress-info span {
+      font-weight: 600;
+      color: var(--color-text);
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 8px;
+      background: var(--color-border);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .progress {
+      height: 100%;
+      background: var(--color-accent);
+      transition: width 0.4s ease;
+      border-radius: 4px;
+    }
+
+    .donation-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: auto;
+    }
+
+    .org {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+      color: var(--color-text);
+    }
+
+    .org img {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .donate-btn {
+      background: var(--color-accent);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: var(--border-radius-sm);
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .donate-btn:hover {
+      background: var(--color-accent-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+    }
+
+    /* Center category cards */
+    .category-card {
+      background: white;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: var(--transition);
+      border: 1px solid var(--color-border);
+      text-align: center;
+      padding: 24px;
+      height: 100%;
+      max-width: 280px;
+      width: 100%;
+    }
+
+    .category-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+      background: var(--color-accent-light);
+    }
+
+    .category-icon {
+      width: 60px;
+      height: 60px;
+      background: var(--color-accent-light);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+      color: var(--color-accent);
+      font-size: 24px;
+    }
+
+    .category-card h3 {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: var(--color-text);
+    }
+
+    .category-card p {
+      font-size: 14px;
+      color: var(--color-text-light);
+      margin-bottom: 20px;
+      flex-grow: 1;
+    }
+
+    /* Hero Carousel */
+    .carousel-container {
+      margin: 0 auto;
+      max-width: 1200px;
+      padding: 0 20px;
+      display: flex;
+      justify-content: center;
+    }
+
     .carousel {
       position: relative;
       width: 100%;
+      max-width: 1000px;
       height: 500px;
       overflow: hidden;
-      margin: 0 auto;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      margin: 24px auto;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow-xl);
     }
 
     .carousel-inner {
@@ -241,9 +522,7 @@
     .carousel-slide img {
       width: 100%;
       height: 100%;
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
+      object-fit: cover;
     }
 
     .slide-content {
@@ -251,39 +530,45 @@
       bottom: 0;
       left: 0;
       right: 0;
-      background: linear-gradient(to top, rgba(0, 0, 0, 0.2), transparent);
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
       color: white;
-      padding: 30px;
-      padding-top: 60px;
+      padding: 40px;
+      padding-top: 80px;
+      text-align: left;
     }
 
     .slide-content h2 {
-      font-size: 2rem;
-      margin-bottom: 10px;
+      font-size: 2.5rem;
+      margin-bottom: 16px;
       font-weight: 700;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
     }
 
     .slide-content p {
-      font-size: 1.1rem;
-      margin-bottom: 20px;
+      font-size: 1.2rem;
+      margin-bottom: 24px;
       max-width: 600px;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
     }
 
     .btn-donate {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
       background: var(--color-accent);
       color: white;
-      padding: 12px 24px;
-      border-radius: 8px;
+      padding: 14px 28px;
+      border-radius: var(--border-radius-sm);
       text-decoration: none;
       font-weight: 600;
       transition: var(--transition);
+      box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
     }
 
     .btn-donate:hover {
       background: var(--color-accent-hover);
       transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+      box-shadow: 0 6px 16px rgba(16, 185, 129, 0.5);
     }
 
     .carousel-controls {
@@ -310,6 +595,7 @@
       cursor: pointer;
       transition: var(--transition);
       backdrop-filter: blur(5px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
 
     .carousel-control:hover {
@@ -348,8 +634,13 @@
         height: 400px;
       }
       
+      .slide-content {
+        padding: 24px;
+        padding-top: 60px;
+      }
+      
       .slide-content h2 {
-        font-size: 1.5rem;
+        font-size: 1.8rem;
       }
       
       .slide-content p {
@@ -368,133 +659,407 @@
       }
       
       .slide-content {
-        padding: 20px;
+        padding: 16px;
         padding-top: 40px;
       }
       
       .slide-content h2 {
-        font-size: 1.3rem;
+        font-size: 1.5rem;
       }
       
       .slide-content p {
         font-size: 0.9rem;
+        margin-bottom: 16px;
+      }
+      
+      .btn-donate {
+        padding: 12px 20px;
+        font-size: 14px;
       }
     }
 
-    .donation-section {
+    /* About */
+    .about-section {
+        padding: 80px 20px;
+        background-color: #f9f9f9;
+    }
+
+    .about-container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .about-container h2 {
+        text-align: center;
+        margin-bottom: 40px;
+        font-size: 2.5em;
+        color: #333;
+    }
+
+    .about-content {
+        display: flex;
+        align-items: center;
+        gap: 50px;
+    }
+
+    .about-text {
+        flex: 1;
+    }
+
+    .about-text p {
+        margin-bottom: 20px;
+        line-height: 1.6;
+        color: #555;
+    }
+
+    .about-text h3 {
+        margin-top: 30px;
+        margin-bottom: 15px;
+        color: #333;
+    }
+
+    .about-image {
+        flex: 1;
+        text-align: center;
+    }
+
+    .about-image img {
+        max-width: 100%;
+        border-radius: 8px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .about-content {
+            flex-direction: column;
+        }
+    }
+
+    /* Contact */
+    .contact-section {
+        padding: 80px 20px;
+        background-color: #fff;
+    }
+
+    .contact-container {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .contact-container h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        font-size: 2.5em;
+        color: #333;
+    }
+
+    .contact-subtitle {
+        text-align: center;
+        margin-bottom: 40px;
+        color: #666;
+    }
+
+    .contact-form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: bold;
+        color: #333;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 1em;
+        box-sizing: border-box;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+        border-color: #007bff;
+        outline: none;
+    }
+
+    .submit-btn {
+        padding: 15px 30px;
+        background-color: var(--color-accent);
+        color: white;
+        border: none;
+        border-radius: 4px;
+        font-size: 1.1em;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .submit-btn:hover {
+        background-color: #0056b3;
+    }
+
+
+    /* FAQ */
+    .faq-section {
+        padding: 80px 20px;
+        background-color: #f9f9f9;
+    }
+
+    .faq-container {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .faq-container h2 {
+        text-align: center;
+        margin-bottom: 40px;
+        font-size: 2.5em;
+        color: #333;
+    }
+
+    .faq-item {
+        margin-bottom: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        overflow: hidden;
+    }
+
+    .faq-question {
+        width: 100%;
+        padding: 20px;
+        text-align: left;
+        background-color: #fff;
+        border: none;
+        font-size: 1.1em;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .faq-question:hover {
+        background-color: #f0f0f0;
+    }
+
+    .faq-question::after {
+        content: '+';
+        font-size: 1.5em;
+    }
+
+    .faq-question.active::after {
+        content: '-';
+    }
+
+    .faq-answer {
+        padding: 0 20px;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease, padding 0.3s ease;
+        background-color: #fff;
+    }
+
+    .faq-answer.open {
+        padding: 20px;
+        max-height: 500px;
+    }
+
+    .faq-answer p {
+        margin: 0;
+        line-height: 1.6;
+        color: #555;
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--color-footer);
+      color: white;
+      padding: 60px 0 30px;
+      margin-top: 80px;
+    }
+
+    /* Center footer content */
+    .footer-container {
       max-width: 1200px;
-      margin: 50px auto;
-    }
-
-    .section-title {
-      font-size: 24px;
-      font-weight: 700;
-      margin-bottom: 24px;
-      color: #1e293b;
-    }
-
-    .donation-container {
+      margin: 0 auto;
+      padding: 0 20px;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 24px;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
     }
 
-    .donation-card {
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      transition: transform 0.3s ease;
+    .footer-column {
+      text-align: center;
     }
 
-    .donation-card:hover {
-      transform: translateY(-5px);
-    }
-
-    .donation-img {
-      width: 100%;
-      height: 220px;
-      object-fit: fill;
-    }
-
-    .donation-body {
-      padding: 16px 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .donation-body h3 {
-      font-size: 16px;
+    .footer-column h3 {
+      font-size: 18px;
       font-weight: 600;
-      color: #1e293b;
+      margin-bottom: 20px;
+      position: relative;
+      padding-bottom: 10px;
     }
 
-    .progress-bar {
-      width: 100%;
-      height: 8px;
-      background: #e2e8f0;
-      border-radius: 4px;
-      overflow: hidden;
+    .footer-column h3::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 40px;
+      height: 2px;
+      background: var(--color-accent);
     }
 
-    .progress {
-      height: 100%;
-      background: #3b82f6;
-      transition: width 0.4s ease;
+    .footer-column p {
+      color: #cbd5e1;
+      margin-bottom: 20px;
+      line-height: 1.6;
     }
 
-    .donation-info {
-      font-size: 14px;
-      color: #475569;
+    .footer-links {
+      list-style: none;
     }
 
-    .donation-info span {
-      font-weight: 600;
+    .footer-links li {
+      margin-bottom: 12px;
     }
 
-    .donation-footer {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: auto;
-    }
-
-    .org {
+    .footer-links a {
+      color: #cbd5e1;
+      text-decoration: none;
+      transition: var(--transition);
       display: flex;
       align-items: center;
       gap: 8px;
-      font-size: 14px;
-      color: #1e293b;
+      justify-content: center;
     }
 
-    .org img {
-      width: 28px;
-      height: 28px;
+    .footer-links a:hover {
+      color: white;
+      transform: translateX(5px);
+    }
+
+    .social-links {
+      display: flex;
+      gap: 16px;
+      margin-top: 20px;
+      justify-content: center;
+    }
+
+    .social-link {
+      width: 40px;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.1);
       border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-decoration: none;
+      transition: var(--transition);
     }
 
-    .donate-btn {
-      background: #0ea5e9;
+    .social-link:hover {
+      background: var(--color-accent);
+      transform: translateY(-3px);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 30px;
+      margin-top: 40px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: #94a3b8;
+      font-size: 14px;
+    }
+
+    /* Scroll to top button */
+    .scroll-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 50px;
+      height: 50px;
+      background: var(--color-accent);
       color: white;
       border: none;
-      padding: 8px 16px;
-      border-radius: 8px;
-      font-size: 14px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       cursor: pointer;
-      transition: background 0.3s ease;
+      transition: var(--transition);
+      box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+      z-index: 100;
+      opacity: 0;
+      visibility: hidden;
     }
 
-    .donate-btn:hover {
-      background: #0284c7;
+    .scroll-top.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .scroll-top:hover {
+      background: var(--color-accent-hover);
+      transform: translateY(-3px);
+    }
+
+    /* Animation for cards */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .donation-card, .category-card {
+      animation: fadeInUp 0.5s ease forwards;
+    }
+
+    .donation-card:nth-child(2) {
+      animation-delay: 0.1s;
+    }
+
+    .donation-card:nth-child(3) {
+      animation-delay: 0.2s;
+    }
+
+    .donation-card:nth-child(4) {
+      animation-delay: 0.3s;
+    }
+
+    .donation-card:nth-child(5) {
+      animation-delay: 0.4s;
+    }
+
+    .donation-card:nth-child(6) {
+      animation-delay: 0.5s;
     }
   </style>
 </head>
 <body>
+  <!-- Navbar -->
   <nav class="navbar">
-    <div class="navbar-logo">DonasiYuk</div>
+    <div class="navbar-logo">
+      <i class="fas fa-hand-holding-heart"></i>
+      DonasiYuk
+    </div>
 
     <div class="hamburger" id="hamburger">
       <div></div>
@@ -502,43 +1067,58 @@
       <div></div>
     </div>
     <div class="navbar-menu" id="navbarMenu">
-      <a href="#" class="active">Dashboard</a>
-      <a href="#semua-campaign">Semua Campaign</a>
-      <a href="#kategori-donasi">Kategori Donasi</a>
-      <a href="pengajuanDonasi.html">Pengajuan Donasi</a>
-      <a href="#" onclick="logout(); return false;" style="color: black;">Logout</a>
+      <a href="#" class="active"><i class="fas fa-home"></i> Dashboard</a>
+      <a href="#semua-campaign"><i class="fas fa-list"></i> Semua Campaign</a>
+      <a href="#kategori-donasi"><i class="fas fa-tags"></i> Kategori Donasi</a>
+      <a href="pengajuanDonasi.html"><i class="fas fa-plus-circle"></i> Pengajuan Donasi</a>
+      <a href="#" onclick="logout(); return false;" style="color: var(--color-text);"><i class="fas fa-sign-out-alt"></i> Logout</a>
     </div>
     <div class="navbar-profile">
-      <div class="user-avatar">DN</div>
+      <div class="user-avatar" id="user-initials">DN</div>
       <span id="nama-user">Daffi</span>
     </div>
   </nav>
 
-  <!-- Carousel Section -->
+  <!-- Hero Carousel -->
   <section class="carousel-container">
     <div class="carousel" id="carousel">
       <div class="carousel-inner" id="carouselInner">
         <!-- Slide 1 -->
         <div class="carousel-slide">
-          <div style="width:100%;height:100%;background:linear-gradient(135deg, #667eea 0%, #764ba2 100%);"><img src="assets/user/carousel/1.png" alt=""></div>
+          <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Bantu Pendidikan Anak Indonesia">
           <div class="slide-content">
-            <a href="#" class="btn-donate">Donasi Sekarang</a>
+            <h2>Bantu Pendidikan Anak Indonesia</h2>
+            <p>Bersama kita wujudkan masa depan yang lebih cerah untuk anak-anak Indonesia dengan memberikan akses pendidikan yang layak.</p>
+            <a href="#" class="btn-donate">
+              <i class="fas fa-heart"></i>
+              Donasi Sekarang
+            </a>
           </div>
         </div>
         
         <!-- Slide 2 -->
         <div class="carousel-slide">
-          <div style="width:100%;height:100%;background:linear-gradient(135deg, #f093fb 0%, #f5576c 100%);"><img src="assets/user/carousel/banjirbali.png" alt=""></div>
+          <img src="https://images.unsplash.com/photo-1615876234886-fd9a39fda97f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2030&q=80" alt="Bantu Korban Banjir Bali">
           <div class="slide-content">
-            <a href="#" class="btn-donate">Donasi Sekarang</a>
+            <h2>Bantu Korban Banjir Bali</h2>
+            <p>Ribuan keluarga terdampak banjir di Bali membutuhkan bantuan Anda. Mari berikan dukungan untuk pemulihan mereka.</p>
+            <a href="#" class="btn-donate">
+              <i class="fas fa-heart"></i>
+              Donasi Sekarang
+            </a>
           </div>
         </div>
         
         <!-- Slide 3 -->
         <div class="carousel-slide">
-          <div style="width:100%;height:100%;background:linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);"><img src="assets/user/carousel/anakpanti.png" alt=""></div>
+          <img src="https://images.unsplash.com/photo-1542816417-0c57b6f73c2e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Dukung Anak Panti Asuhan">
           <div class="slide-content">
-            <a href="#" class="btn-donate">Donasi Sekarang</a>
+            <h2>Dukung Anak Panti Asuhan</h2>
+            <p>Berikan kasih sayang dan dukungan untuk anak-anak panti asuhan agar mereka dapat tumbuh dengan bahagia dan berprestasi.</p>
+            <a href="#" class="btn-donate">
+              <i class="fas fa-heart"></i>
+              Donasi Sekarang
+            </a>
           </div>
         </div>
       </div>
@@ -560,69 +1140,90 @@
     </div>
   </section>
 
-  <!-- Section Card Donasi -->
-  <section class="donation-section">
-    <h2 class="section-title">Kategori Favorit</h2>
+  <!-- Section Kategori Favorit -->
+  <section class="section-container donation-section">
+    <div class="section-header">
+      <h2 class="section-title">Kategori Favorit</h2>
+      <a href="#" class="view-all">
+        Lihat Semua
+        <i class="fas fa-arrow-right"></i>
+      </a>
+    </div>
     <div class="donation-container">
       <!-- Card 1 -->
       <div class="donation-card">
-        <img src="assets/user/campaign/anakpanti.png" alt="Gambar Donasi" class="donation-img">
+        <img src="https://images.unsplash.com/photo-1542816417-0c57b6f73c2e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Bersama #bentukNYATA, Jadilah Kakak Asuh untuk Mereka!" class="donation-img">
         <div class="donation-body">
           <h3>Bersama #bentukNYATA, Jadilah Kakak Asuh untuk Mereka!</h3>
-          <div class="progress-bar">
-            <div class="progress" style="width: 60%;"></div>
+          <div class="progress-container">
+            <div class="progress-info">
+              <span>Rp 24.153.000</span> terkumpul dari <span>Rp 54.000.000</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress" style="width: 45%;"></div>
+            </div>
           </div>
-          <p class="donation-info">
-            <span>Rp 24.153.000</span> terkumpul dari <span>Rp 54.000.000</span>
-          </p>
           <div class="donation-footer">
             <div class="org">
-              <img src="assets/user/campaign/3.png" alt="">
+              <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" alt="KamiiCode">
               <span>KamiiCode</span>
             </div>
-            <button class="donate-btn">Donasi</button>
+            <button class="donate-btn">
+              <i class="fas fa-heart"></i>
+              Donasi
+            </button>
           </div>
         </div>
       </div>
 
       <!-- Card 2 -->
       <div class="donation-card">
-        <img src="assets/user/campaign/3.png" alt="Gambar Donasi" class="donation-img">
+        <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Buka Jendela Masa Depan Anak Indonesia" class="donation-img">
         <div class="donation-body">
           <h3>Buka Jendela Masa Depan Anak Indonesia</h3>
-          <div class="progress-bar">
-            <div class="progress" style="width: 80%; background-color: #ef4444;"></div>
+          <div class="progress-container">
+            <div class="progress-info">
+              <span>Rp 28.121.571</span> terkumpul dari <span>Rp 200.000.000</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress" style="width: 14%; background-color: #ef4444;"></div>
+            </div>
           </div>
-          <p class="donation-info">
-            <span>Rp 28.121.571</span> terkumpul dari <span>Rp 200.000.000</span>
-          </p>
           <div class="donation-footer">
             <div class="org">
-              <img src="assets/user/campaign/3.png" alt="">
+              <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" alt="DREPPRESSS">
               <span>DREPPRESSS</span>
             </div>
-            <button class="donate-btn">Donasi</button>
+            <button class="donate-btn">
+              <i class="fas fa-heart"></i>
+              Donasi
+            </button>
           </div>
         </div>
       </div>
 
       <!-- Card 3 -->
       <div class="donation-card">
-        <img src="assets/user/campaign/banjirbali1.png" alt="Gambar Donasi" class="donation-img">
+        <img src="https://images.unsplash.com/photo-1615876234886-fd9a39fda97f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2030&q=80" alt="Setelah Banjir, Saatnya Pulihkan Harapan" class="donation-img">
         <div class="donation-body">
           <h3>Setelah Banjir, Saatnya Pulihkan Harapan</h3>
-          <div class="progress-bar">
-            <div class="progress" style="width: 50%; background-color: #10b981;"></div>
+          <div class="progress-container">
+            <div class="progress-info">
+              <span>Rp 289.201.246</span> terkumpul dari <span>Rp 500.000.000</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress" style="width: 58%; background-color: #10b981;"></div>
+            </div>
           </div>
-          <p class="donation-info">
-            <span>Rp 289.201.246</span> terkumpul dari <span>Rp 500.000.000</span>
-          </p>
           <div class="donation-footer">
             <div class="org">
-              <img src="assets/user/campaign/3.png" alt="">
+              <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" alt="DesainCoding.id">
               <span>DesainCoding.id</span>
             </div>
-            <button class="donate-btn">Donasi</button>
+            <button class="donate-btn">
+              <i class="fas fa-heart"></i>
+              Donasi
+            </button>
           </div>
         </div>
       </div>
@@ -630,131 +1231,167 @@
   </section>
 
   <!-- Section Semua Campaign -->
-  <section class="donation-section" id="semua-campaign"> <!-- Added ID here -->
-    <h2 class="section-title">Semua Campaign</h2>
+  <section class="section-container donation-section" id="semua-campaign">
+    <div class="section-header">
+      <h2 class="section-title">Semua Campaign</h2>
+      <a href="#" class="view-all">
+        Lihat Semua
+        <i class="fas fa-arrow-right"></i>
+      </a>
+    </div>
     <div class="donation-container">
       <!-- Campaign 1 -->
       <div class="donation-card">
-        <img src="assets/user/campaign/3.png" alt="Bantu Anak Yatim" class="donation-img">
+        <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Bantu Anak Yatim Meraih Pendidikan" class="donation-img">
         <div class="donation-body">
           <h3>Bantu Anak Yatim Meraih Pendidikan</h3>
-          <div class="progress-bar">
-            <div class="progress" style="width: 75%; background-color: #10b981;"></div>
+          <div class="progress-container">
+            <div class="progress-info">
+              <span>Rp 37.500.000</span> terkumpul dari <span>Rp 50.000.000</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress" style="width: 75%; background-color: #10b981;"></div>
+            </div>
           </div>
-          <p class="donation-info">
-            <span>Rp 37.500.000</span> terkumpul dari <span>Rp 50.000.000</span>
-          </p>
           <div class="donation-footer">
             <div class="org">
-              <img src="assets/user/campaign/3.png" alt="">
+              <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" alt="Yayasan Peduli">
               <span>Yayasan Peduli</span>
             </div>
-            <button class="donate-btn">Donasi</button>
+            <button class="donate-btn">
+              <i class="fas fa-heart"></i>
+              Donasi
+            </button>
           </div>
         </div>
       </div>
 
       <!-- Campaign 2 -->
       <div class="donation-card">
-        <img src="assets/user/campaign/3.png" alt="Panti Asuhan Bahagia" class="donation-img">
+        <img src="https://images.unsplash.com/photo-1542816417-0c57b6f73c2e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Dukung Panti Asuhan Bahagia" class="donation-img">
         <div class="donation-body">
           <h3>Dukung Panti Asuhan Bahagia</h3>
-          <div class="progress-bar">
-            <div class="progress" style="width: 40%; background-color: #3b82f6;"></div>
+          <div class="progress-container">
+            <div class="progress-info">
+              <span>Rp 20.000.000</span> terkumpul dari <span>Rp 50.000.000</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress" style="width: 40%; background-color: #3b82f6;"></div>
+            </div>
           </div>
-          <p class="donation-info">
-            <span>Rp 20.000.000</span> terkumpul dari <span>Rp 50.000.000</span>
-          </p>
           <div class="donation-footer">
             <div class="org">
-              <img src="assets/user/campaign/3.png" alt="">
+              <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" alt="Sahabat Anak">
               <span>Sahabat Anak</span>
             </div>
-            <button class="donate-btn">Donasi</button>
+            <button class="donate-btn">
+              <i class="fas fa-heart"></i>
+              Donasi
+            </button>
           </div>
         </div>
       </div>
 
       <!-- Campaign 3 -->
       <div class="donation-card">
-        <img src="assets/user/campaign/3.png" alt="Masjid" class="donation-img">
+        <img src="https://images.unsplash.com/photo-1541336032412-2048a678540d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2067&q=80" alt="Pembangunan Masjid Al-Hidayah" class="donation-img">
         <div class="donation-body">
           <h3>Pembangunan Masjid Al-Hidayah</h3>
-          <div class="progress-bar">
-            <div class="progress" style="width: 60%; background-color: #f59e0b;"></div>
+          <div class="progress-container">
+            <div class="progress-info">
+              <span>Rp 120.000.000</span> terkumpul dari <span>Rp 200.000.000</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress" style="width: 60%; background-color: #f59e0b;"></div>
+            </div>
           </div>
-          <p class="donation-info">
-            <span>Rp 120.000.000</span> terkumpul dari <span>Rp 200.000.000</span>
-          </p>
           <div class="donation-footer">
             <div class="org">
-              <img src="assets/user/campaign/3.png" alt="">
+              <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" alt="Masjid Al-Hidayah">
               <span>Masjid Al-Hidayah</span>
             </div>
-            <button class="donate-btn">Donasi</button>
+            <button class="donate-btn">
+              <i class="fas fa-heart"></i>
+              Donasi
+            </button>
           </div>
         </div>
       </div>
 
       <!-- Campaign 4 -->
       <div class="donation-card">
-        <img src="assets/user/campaign/3.png" alt="Bantuan Darurat Bencana Alam" class="donation-img">
+        <img src="https://images.unsplash.com/photo-1615876234886-fd9a39fda97f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2030&q=80" alt="Bantuan Darurat Bencana Alam" class="donation-img">
         <div class="donation-body">
           <h3>Bantuan Darurat Bencana Alam</h3>
-          <div class="progress-bar">
-            <div class="progress" style="width: 90%; background-color: #ef4444;"></div>
+          <div class="progress-container">
+            <div class="progress-info">
+              <span>Rp 450.000.000</span> terkumpul dari <span>Rp 500.000.000</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress" style="width: 90%; background-color: #ef4444;"></div>
+            </div>
           </div>
-          <p class="donation-info">
-            <span>Rp 450.000.000</span> terkumpul dari <span>Rp 500.000.000</span>
-          </p>
           <div class="donation-footer">
             <div class="org">
-              <img src="assets/user/campaign/3.png" alt="">
+              <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" alt="Relawan Bersatu">
               <span>Relawan Bersatu</span>
             </div>
-            <button class="donate-btn">Donasi</button>
+            <button class="donate-btn">
+              <i class="fas fa-heart"></i>
+              Donasi
+            </button>
           </div>
         </div>
       </div>
 
       <!-- Campaign 5 -->
       <div class="donation-card">
-        <img src="assets/user/campaign/3.png" alt="Air Bersih" class="donation-img">
+        <img src="https://images.unsplash.com/photo-1541336032412-2048a678540d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2067&q=80" alt="Wujudkan Air Bersih untuk Desa Tertinggal" class="donation-img">
         <div class="donation-body">
           <h3>Wujudkan Air Bersih untuk Desa Tertinggal</h3>
-          <div class="progress-bar">
-            <div class="progress" style="width: 55%; background-color: #06b6d4;"></div>
+          <div class="progress-container">
+            <div class="progress-info">
+              <span>Rp 165.000.000</span> terkumpul dari <span>Rp 300.000.000</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress" style="width: 55%; background-color: #06b6d4;"></div>
+            </div>
           </div>
-          <p class="donation-info">
-            <span>Rp 165.000.000</span> terkumpul dari <span>Rp 300.000.000</span>
-          </p>
           <div class="donation-footer">
             <div class="org">
-              <img src="assets/user/campaign/3.png" alt="">
+              <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" alt="Air Untuk Semua">
               <span>Air Untuk Semua</span>
             </div>
-            <button class="donate-btn">Donasi</button>
+            <button class="donate-btn">
+              <i class="fas fa-heart"></i>
+              Donasi
+            </button>
           </div>
         </div>
       </div>
 
       <!-- Campaign 6 -->
       <div class="donation-card">
-        <img src="assets/user/campaign/3.png" alt="Sembako" class="donation-img">
+        <img src="https://images.unsplash.com/photo-1542816417-0c57b6f73c2e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Sembako Gratis untuk Keluarga Pra-Sejahtera" class="donation-img">
         <div class="donation-body">
           <h3>Sembako Gratis untuk Keluarga Pra-Sejahtera</h3>
-          <div class="progress-bar">
-            <div class="progress" style="width: 30%; background-color: #a855f7;"></div>
+          <div class="progress-container">
+            <div class="progress-info">
+              <span>Rp 45.000.000</span> terkumpul dari <span>Rp 150.000.000</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress" style="width: 30%; background-color: #a855f7;"></div>
+            </div>
           </div>
-          <p class="donation-info">
-            <span>Rp 45.000.000</span> terkumpul dari <span>Rp 150.000.000</span>
-          </p>
           <div class="donation-footer">
             <div class="org">
-              <img src="assets/user/campaign/3.png" alt="">
+              <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" alt="Berbagi Rezeki">
               <span>Berbagi Rezeki</span>
             </div>
-            <button class="donate-btn">Donasi</button>
+            <button class="donate-btn">
+              <i class="fas fa-heart"></i>
+              Donasi
+            </button>
           </div>
         </div>
       </div>
@@ -762,79 +1399,213 @@
   </section>
 
   <!-- Section Kategori Donasi -->
-  <section class="donation-section" id="kategori-donasi"> <!-- Added ID for navigation -->
-    <h2 class="section-title">Kategori Donasi</h2>
+  <section class="section-container donation-section" id="kategori-donasi">
+    <div class="section-header">
+      <h2 class="section-title">Kategori Donasi</h2>
+      <a href="#" class="view-all">
+        Lihat Semua
+        <i class="fas fa-arrow-right"></i>
+      </a>
+    </div>
     <div class="donation-container">
       <!-- Category 1 -->
-      <div class="donation-card">
-        <img src="assets/user/campaign/3.png" alt="Edukasi" class="donation-img">
-        <div class="donation-body">
-          <h3>Edukasi</h3>
-          <p class="donation-info">Bantu anak-anak mendapatkan pendidikan yang layak.</p>
-          <div class="donation-footer">
-            <button class="donate-btn">Donasi</button>
-          </div>
+      <div class="category-card">
+        <div class="category-icon">
+          <i class="fas fa-graduation-cap"></i>
         </div>
+        <h3>Edukasi</h3>
+        <p>Bantu anak-anak mendapatkan pendidikan yang layak untuk masa depan yang lebih baik.</p>
+        <button class="donate-btn">
+          <i class="fas fa-heart"></i>
+          Donasi
+        </button>
       </div>
 
       <!-- Category 2 -->
-      <div class="donation-card">
-        <img src="assets/user/campaign/3.png" alt="Kesehatan" class="donation-img">
-        <div class="donation-body">
-          <h3>Kesehatan</h3>
-          <p class="donation-info">Dukung program kesehatan untuk masyarakat yang membutuhkan.</p>
-          <div class="donation-footer">
-            <button class="donate-btn">Donasi</button>
-          </div>
+      <div class="category-card">
+        <div class="category-icon">
+          <i class="fas fa-heartbeat"></i>
         </div>
+        <h3>Kesehatan</h3>
+        <p>Dukung program kesehatan untuk masyarakat yang membutuhkan perawatan medis.</p>
+        <button class="donate-btn">
+          <i class="fas fa-heart"></i>
+          Donasi
+        </button>
       </div>
 
       <!-- Category 3 -->
-      <div class="donation-card">
-        <img src="assets/user/campaign/3.png" alt="Lingkungan" class="donation-img">
-        <div class="donation-body">
-          <h3>Lingkungan</h3>
-          <p class="donation-info">Lindungi alam dan lingkungan untuk generasi mendatang.</p>
-          <div class="donation-footer">
-            <button class="donate-btn">Donasi</button>
-          </div>
+      <div class="category-card">
+        <div class="category-icon">
+          <i class="fas fa-leaf"></i>
         </div>
+        <h3>Lingkungan</h3>
+        <p>Lindungi alam dan lingkungan untuk generasi mendatang dengan program berkelanjutan.</p>
+        <button class="donate-btn">
+          <i class="fas fa-heart"></i>
+          Donasi
+        </button>
       </div>
 
       <!-- Category 4 -->
-      <div class="donation-card">
-        <img src="assets/user/campaign/3.png" alt="Bencana Alam" class="donation-img">
-        <div class="donation-body">
-          <h3>Bencana Alam</h3>
-          <p class="donation-info">Bantu korban bencana alam untuk memulihkan kehidupan mereka.</p>
-          <div class="donation-footer">
-            <button class="donate-btn">Donasi</button>
-          </div>
+      <div class="category-card">
+        <div class="category-icon">
+          <i class="fas fa-house-damage"></i>
         </div>
+        <h3>Bencana Alam</h3>
+        <p>Bantu korban bencana alam untuk memulihkan kehidupan mereka dengan cepat.</p>
+        <button class="donate-btn">
+          <i class="fas fa-heart"></i>
+          Donasi
+        </button>
       </div>
 
       <!-- Category 5 -->
-      <div class="donation-card">
-        <img src="assets/user/campaign/3.png" alt="Kemanusiaan" class="donation-img">
-        <div class="donation-body">
-          <h3>Kemanusiaan</h3>
-          <p class="donation-info">Dukung program kemanusiaan untuk masyarakat yang terpinggirkan.</p>
-          <div class="donation-footer">
-            <button class="donate-btn">Donasi</button>
-          </div>
+      <div class="category-card">
+        <div class="category-icon">
+          <i class="fas fa-hands-helping"></i>
         </div>
+        <h3>Kemanusiaan</h3>
+        <p>Dukung program kemanusiaan untuk masyarakat yang terpinggirkan dan membutuhkan.</p>
+        <button class="donate-btn">
+          <i class="fas fa-heart"></i>
+          Donasi
+        </button>
       </div>
     </div>
   </section>
 
-  <script>
+  <!-- About Us -->
+  <section id="about-us" class="about-section">
+      <div class="about-container">
+          <h2>Tentang Bikinin</h2>
+          <div class="about-content">
+              <div class="about-text">
+                  <p>Bikinin adalah platform terdepan yang membantu Anda mewujudkan ide-ide digital menjadi kenyataan. Dengan tim yang berpengalaman di bidang desain dan pengembangan web, kami berkomitmen untuk memberikan solusi yang kreatif, inovatif, dan tepat guna.</p>
+                  <p>Kami percaya bahwa setiap bisnis memiliki cerita unik, dan tugas kami adalah membantu menceritakannya melalui desain yang memukau dan teknologi yang andal.</p>
+                  <h3>Misi Kami</h3>
+                  <p>Memberdayakan bisnis dengan solusi digital yang mudah, cepat, dan berkualitas tinggi untuk mendorong pertumbuhan di era digital.</p>
+              </div>
+              <div class="about-image">
+                  <!-- Ganti dengan path gambar tim atau workspace Anda -->
+                  <img src="path-ke-gambar-tentang-kami.jpg" alt="Tim Bikinin">
+              </div>
+          </div>
+      </div>
+  </section>
 
-  function logout() {
-    if (confirm('Apakah Anda yakin ingin logout?')) {
-      localStorage.removeItem('currentUser');
-      window.location.href = 'login.html';
-    }
-  }
+    <!-- Contact -->
+  <section id="contact" class="contact-section">
+      <div class="contact-container">
+          <h2>Hubungi Kami</h2>
+          <p class="contact-subtitle">Punya pertanyaan atau proyek yang ingin didiskusikan? Silakan tinggalkan pesan!</p>
+          <form class="contact-form">
+              <div class="form-group">
+                  <label for="name">Nama Lengkap</label>
+                  <input type="text" id="name" name="name" required>
+              </div>
+              <div class="form-group">
+                  <label for="email">Email</label>
+                  <input type="email" id="email" name="email" required>
+              </div>
+              <div class="form-group">
+                  <label for="subject">Subjek</label>
+                  <input type="text" id="subject" name="subject" required>
+              </div>
+              <div class="form-group">
+                  <label for="message">Pesan</label>
+                  <textarea id="message" name="message" rows="5" required></textarea>
+              </div>
+              <button type="submit" class="submit-btn">Kirim Pesan</button>
+          </form>
+      </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="faq-section">
+      <div class="faq-container">
+          <h2>Pertanyaan yang Sering Diajukan (FAQ)</h2>
+          <div class="faq-list">
+              <div class="faq-item">
+                  <button class="faq-question">Apa saja layanan yang Bikinin sediakan?</button>
+                  <div class="faq-answer">
+                      <p>Kami menyediakan berbagai layanan digital termasuk pembuatan website, desain UI/UX, pengembangan aplikasi web, dan konsultasi IT.</p>
+                  </div>
+              </div>
+              <div class="faq-item">
+                  <button class="faq-question">Berapa lama waktu pengerjaan sebuah website?</button>
+                  <div class="faq-answer">
+                      <p>Waktu pengerjaan bervariasi tergantung kompleksitas proyek. Website sederhana biasanya selesai dalam 2-3 minggu, sedangkan proyek yang lebih kompleks bisa memakan waktu 1-3 bulan.</p>
+                  </div>
+              </div>
+              <div class="faq-item">
+                  <button class="faq-question">Apakah saya bisa request revisi desain?</button>
+                  <div class="faq-answer">
+                      <p>Tentu! Kami memberikan beberapa putaran revisi pada tahap desain untuk memastikan hasil akhir sesuai dengan harapan Anda.</p>
+                  </div>
+              </div>
+              <div class="faq-item">
+                  <button class="faq-question">Bagaimana dengan biaya pemeliharaan website?</button>
+                  <div class="faq-answer">
+                      <p>Kami menawarkan paket pemeliharaan yang mencakup update, backup, dan dukungan teknis. Biaya bervariasi tergantung kebutuhan website Anda.</p>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-column">
+        <h3>DonasiYuk</h3>
+        <p>Platform donasi digital yang menghubungkan para dermawan dengan mereka yang membutuhkan bantuan.</p>
+        <div class="social-links">
+          <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+      <div class="footer-column">
+        <h3>Menu</h3>
+        <ul class="footer-links">
+          <li><a href="#"><i class="fas fa-chevron-right"></i> Dashboard</a></li>
+          <li><a href="#semua-campaign"><i class="fas fa-chevron-right"></i> Semua Campaign</a></li>
+          <li><a href="#kategori-donasi"><i class="fas fa-chevron-right"></i> Kategori Donasi</a></li>
+          <li><a href="pengajuanDonasi.html"><i class="fas fa-chevron-right"></i> Pengajuan Donasi</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Bantuan</h3>
+        <ul class="footer-links">
+          <li><a href="#"><i class="fas fa-chevron-right"></i> FAQ</a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> Cara Berdonasi</a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> Syarat & Ketentuan</a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> Kebijakan Privasi</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Kontak</h3>
+        <ul class="footer-links">
+          <li><a href="#"><i class="fas fa-map-marker-alt"></i> Jakarta, Indonesia</a></li>
+          <li><a href="mailto:info@donasiyuk.com"><i class="fas fa-envelope"></i> info@donasiyuk.com</a></li>
+          <li><a href="tel:+62123456789"><i class="fas fa-phone"></i> +62 123 456 789</a></li>
+          <li><a href="#"><i class="fas fa-clock"></i> Senin - Jumat: 9:00 - 17:00</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2023 DonasiYuk. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Scroll to top button -->
+  <button class="scroll-top" id="scrollTop">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <script>
     // Navbar functionality
     const hamburger = document.getElementById('hamburger');
     const navbarMenu = document.getElementById('navbarMenu');
@@ -952,43 +1723,83 @@
       }
     }
 
-  // Ambil data pengguna yang sedang login
-  const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    // Scroll to top functionality
+    const scrollTopBtn = document.getElementById('scrollTop');
+    
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        scrollTopBtn.classList.add('show');
+      } else {
+        scrollTopBtn.classList.remove('show');
+      }
+    });
+    
+    scrollTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
 
-  if (!currentUser) {
-    // Jika tidak ada sesi login, arahkan ke login
-    alert('Silakan login terlebih dahulu.');
-    window.location.href = 'login.html';
-  } else {
-    const name = currentUser.name; // asumsi field 'name' disimpan saat registrasi
+    // User authentication
+    // Ambil data pengguna yang sedang login
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
 
-    // Tampilkan nama lengkap
-    document.getElementById('nama-user').textContent = name;
+    if (!currentUser) {
+      // Jika tidak ada sesi login, arahkan ke login
+      alert('Silakan login terlebih dahulu.');
+      window.location.href = 'login.html';
+    } else {
+      const name = currentUser.name; // asumsi field 'name' disimpan saat registrasi
 
-    // Buat inisial: ambil huruf pertama dari setiap kata (maks 2 huruf)
-    const words = name.trim().split(' ');
-    let initials = '';
-    for (let i = 0; i < Math.min(words.length, 2); i++) {
-      if (words[i].length > 0) {
-        initials += words[i][0].toUpperCase();
+      // Tampilkan nama lengkap
+      document.getElementById('nama-user').textContent = name;
+
+      // Buat inisial: ambil huruf pertama dari setiap kata (maks 2 huruf)
+      const words = name.trim().split(' ');
+      let initials = '';
+      for (let i = 0; i < Math.min(words.length, 2); i++) {
+        if (words[i].length > 0) {
+          initials += words[i][0].toUpperCase();
+        }
+      }
+      // Jika hanya satu kata, ulang huruf pertama (misal: "Daffi" → "DD")
+      if (initials.length === 1) {
+        initials += initials;
+      } else if (initials.length === 0) {
+        initials = '??';
+      }
+
+      document.getElementById('user-initials').textContent = initials;
+    }
+
+    // Fungsi logout
+    function logout() {
+      if (confirm('Apakah Anda yakin ingin logout?')) {
+        localStorage.removeItem('currentUser');
+        window.location.href = 'login.html';
       }
     }
-    // Jika hanya satu kata, ulang huruf pertama (misal: "Daffi" → "DD")
-    if (initials.length === 1) {
-      initials += initials;
-    } else if (initials.length === 0) {
-      initials = '??';
-    }
 
-    document.getElementById('user-initials').textContent = initials;
-  }
-
-  // Fungsi logout (opsional)
-  function logout() {
-    localStorage.removeItem('currentUser');
-    window.location.href = 'login.html';
-  }
-    
+    // JavaScript untuk fungsi toggle FAQ
+document.querySelectorAll('.faq-question').forEach(button => {
+    button.addEventListener('click', () => {
+        const faqItem = button.parentNode;
+        const faqAnswer = button.nextElementSibling;
+        
+        // Tutup semua FAQ lainnya
+        document.querySelectorAll('.faq-answer').forEach(answer => {
+            if (answer !== faqAnswer) {
+                answer.classList.remove('open');
+                answer.previousElementSibling.classList.remove('active');
+            }
+        });
+        
+        // Toggle FAQ yang diklik
+        button.classList.toggle('active');
+        faqAnswer.classList.toggle('open');
+    });
+});
   </script>
 </body>
-</html>
+</html> 

@@ -10,6 +10,7 @@
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
   <style>
+    /* CSS yang sama seperti sebelumnya */
     :root {
       --color-bg: #ffffff;
       --color-bg-secondary: #f8fafc;
@@ -788,7 +789,7 @@
 
     .form-group input:focus,
     .form-group textarea:focus {
-        border-color: #007bff;
+        border-color: var(--color-accent);
         outline: none;
     }
 
@@ -804,9 +805,25 @@
     }
 
     .submit-btn:hover {
-        background-color: #0056b3;
+        background-color: var(--color-accent-hover);
     }
 
+    /* Form validation styles */
+    .form-group.error input,
+    .form-group.error textarea {
+        border-color: #e74c3c;
+    }
+
+    .error-message {
+        color: #e74c3c;
+        font-size: 0.9em;
+        margin-top: 5px;
+        display: none;
+    }
+
+    .form-group.error .error-message {
+        display: block;
+    }
 
     /* FAQ */
     .faq-section {
@@ -1051,6 +1068,140 @@
     .donation-card:nth-child(6) {
       animation-delay: 0.5s;
     }
+
+    /* Modal styles */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 2000;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background-color: white;
+      padding: 30px;
+      border-radius: var(--border-radius);
+      width: 90%;
+      max-width: 500px;
+      box-shadow: var(--shadow-xl);
+      position: relative;
+    }
+
+    .close-modal {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      font-size: 24px;
+      cursor: pointer;
+      color: var(--color-text-light);
+    }
+
+    .close-modal:hover {
+      color: var(--color-text);
+    }
+
+    .modal-title {
+      margin-bottom: 20px;
+      font-size: 1.5rem;
+      color: var(--color-text);
+    }
+
+    .donation-amounts {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .amount-option {
+      padding: 12px;
+      border: 1px solid var(--color-border);
+      border-radius: var(--border-radius-sm);
+      text-align: center;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .amount-option:hover {
+      border-color: var(--color-accent);
+    }
+
+    .amount-option.selected {
+      background-color: var(--color-accent-light);
+      border-color: var(--color-accent);
+      color: var(--color-accent);
+    }
+
+    .custom-amount {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid var(--color-border);
+      border-radius: var(--border-radius-sm);
+      margin-bottom: 20px;
+    }
+
+    .payment-methods {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .payment-method {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px;
+      border: 1px solid var(--color-border);
+      border-radius: var(--border-radius-sm);
+      cursor: pointer;
+    }
+
+    .payment-method.selected {
+      border-color: var(--color-accent);
+      background-color: var(--color-accent-light);
+    }
+
+    .payment-method img {
+      width: 40px;
+      height: 24px;
+      object-fit: contain;
+    }
+
+    .modal-donate-btn {
+      width: 100%;
+      padding: 15px;
+      background-color: var(--color-accent);
+      color: white;
+      border: none;
+      border-radius: var(--border-radius-sm);
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .modal-donate-btn:hover {
+      background-color: var(--color-accent-hover);
+    }
+
+    .success-message {
+      display: none;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .success-message i {
+      font-size: 48px;
+      color: var(--color-accent);
+      margin-bottom: 15px;
+    }
   </style>
 </head>
 <body>
@@ -1085,11 +1236,11 @@
       <div class="carousel-inner" id="carouselInner">
         <!-- Slide 1 -->
         <div class="carousel-slide">
-          <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Bantu Pendidikan Anak Indonesia">
+          <img src="assets/user/carousel/1.png" alt="Bantu Pendidikan Anak Indonesia">
           <div class="slide-content">
             <h2>Bantu Pendidikan Anak Indonesia</h2>
             <p>Bersama kita wujudkan masa depan yang lebih cerah untuk anak-anak Indonesia dengan memberikan akses pendidikan yang layak.</p>
-            <a href="#" class="btn-donate">
+            <a href="#" class="btn-donate" data-campaign="Bantu Pendidikan Anak Indonesia">
               <i class="fas fa-heart"></i>
               Donasi Sekarang
             </a>
@@ -1098,11 +1249,11 @@
         
         <!-- Slide 2 -->
         <div class="carousel-slide">
-          <img src="https://images.unsplash.com/photo-1615876234886-fd9a39fda97f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2030&q=80" alt="Bantu Korban Banjir Bali">
+          <img src="assets/user/carousel/banjirbali.png" alt="Bantu Korban Banjir Bali">
           <div class="slide-content">
             <h2>Bantu Korban Banjir Bali</h2>
             <p>Ribuan keluarga terdampak banjir di Bali membutuhkan bantuan Anda. Mari berikan dukungan untuk pemulihan mereka.</p>
-            <a href="#" class="btn-donate">
+            <a href="#" class="btn-donate" data-campaign="Bantu Korban Banjir Bali">
               <i class="fas fa-heart"></i>
               Donasi Sekarang
             </a>
@@ -1111,11 +1262,11 @@
         
         <!-- Slide 3 -->
         <div class="carousel-slide">
-          <img src="https://images.unsplash.com/photo-1542816417-0c57b6f73c2e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Dukung Anak Panti Asuhan">
+          <img src="assets/user/carousel/anakpanti.png" alt="Dukung Anak Panti Asuhan">
           <div class="slide-content">
             <h2>Dukung Anak Panti Asuhan</h2>
             <p>Berikan kasih sayang dan dukungan untuk anak-anak panti asuhan agar mereka dapat tumbuh dengan bahagia dan berprestasi.</p>
-            <a href="#" class="btn-donate">
+            <a href="#" class="btn-donate" data-campaign="Dukung Anak Panti Asuhan">
               <i class="fas fa-heart"></i>
               Donasi Sekarang
             </a>
@@ -1168,7 +1319,7 @@
               <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" alt="KamiiCode">
               <span>KamiiCode</span>
             </div>
-            <button class="donate-btn">
+            <button class="donate-btn" data-campaign="Bersama #bentukNYATA, Jadilah Kakak Asuh untuk Mereka!">
               <i class="fas fa-heart"></i>
               Donasi
             </button>
@@ -1194,7 +1345,7 @@
               <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" alt="DREPPRESSS">
               <span>DREPPRESSS</span>
             </div>
-            <button class="donate-btn">
+            <button class="donate-btn" data-campaign="Buka Jendela Masa Depan Anak Indonesia">
               <i class="fas fa-heart"></i>
               Donasi
             </button>
@@ -1220,7 +1371,7 @@
               <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" alt="DesainCoding.id">
               <span>DesainCoding.id</span>
             </div>
-            <button class="donate-btn">
+            <button class="donate-btn" data-campaign="Setelah Banjir, Saatnya Pulihkan Harapan">
               <i class="fas fa-heart"></i>
               Donasi
             </button>
@@ -1258,7 +1409,7 @@
               <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" alt="Yayasan Peduli">
               <span>Yayasan Peduli</span>
             </div>
-            <button class="donate-btn">
+            <button class="donate-btn" data-campaign="Bantu Anak Yatim Meraih Pendidikan">
               <i class="fas fa-heart"></i>
               Donasi
             </button>
@@ -1284,7 +1435,7 @@
               <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" alt="Sahabat Anak">
               <span>Sahabat Anak</span>
             </div>
-            <button class="donate-btn">
+            <button class="donate-btn" data-campaign="Dukung Panti Asuhan Bahagia">
               <i class="fas fa-heart"></i>
               Donasi
             </button>
@@ -1310,7 +1461,7 @@
               <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" alt="Masjid Al-Hidayah">
               <span>Masjid Al-Hidayah</span>
             </div>
-            <button class="donate-btn">
+            <button class="donate-btn" data-campaign="Pembangunan Masjid Al-Hidayah">
               <i class="fas fa-heart"></i>
               Donasi
             </button>
@@ -1336,7 +1487,7 @@
               <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" alt="Relawan Bersatu">
               <span>Relawan Bersatu</span>
             </div>
-            <button class="donate-btn">
+            <button class="donate-btn" data-campaign="Bantuan Darurat Bencana Alam">
               <i class="fas fa-heart"></i>
               Donasi
             </button>
@@ -1362,7 +1513,7 @@
               <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" alt="Air Untuk Semua">
               <span>Air Untuk Semua</span>
             </div>
-            <button class="donate-btn">
+            <button class="donate-btn" data-campaign="Wujudkan Air Bersih untuk Desa Tertinggal">
               <i class="fas fa-heart"></i>
               Donasi
             </button>
@@ -1388,7 +1539,7 @@
               <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" alt="Berbagi Rezeki">
               <span>Berbagi Rezeki</span>
             </div>
-            <button class="donate-btn">
+            <button class="donate-btn" data-campaign="Sembako Gratis untuk Keluarga Pra-Sejahtera">
               <i class="fas fa-heart"></i>
               Donasi
             </button>
@@ -1415,7 +1566,7 @@
         </div>
         <h3>Edukasi</h3>
         <p>Bantu anak-anak mendapatkan pendidikan yang layak untuk masa depan yang lebih baik.</p>
-        <button class="donate-btn">
+        <button class="donate-btn" data-category="Edukasi">
           <i class="fas fa-heart"></i>
           Donasi
         </button>
@@ -1428,7 +1579,7 @@
         </div>
         <h3>Kesehatan</h3>
         <p>Dukung program kesehatan untuk masyarakat yang membutuhkan perawatan medis.</p>
-        <button class="donate-btn">
+        <button class="donate-btn" data-category="Kesehatan">
           <i class="fas fa-heart"></i>
           Donasi
         </button>
@@ -1441,7 +1592,7 @@
         </div>
         <h3>Lingkungan</h3>
         <p>Lindungi alam dan lingkungan untuk generasi mendatang dengan program berkelanjutan.</p>
-        <button class="donate-btn">
+        <button class="donate-btn" data-category="Lingkungan">
           <i class="fas fa-heart"></i>
           Donasi
         </button>
@@ -1454,7 +1605,7 @@
         </div>
         <h3>Bencana Alam</h3>
         <p>Bantu korban bencana alam untuk memulihkan kehidupan mereka dengan cepat.</p>
-        <button class="donate-btn">
+        <button class="donate-btn" data-category="Bencana Alam">
           <i class="fas fa-heart"></i>
           Donasi
         </button>
@@ -1467,7 +1618,7 @@
         </div>
         <h3>Kemanusiaan</h3>
         <p>Dukung program kemanusiaan untuk masyarakat yang terpinggirkan dan membutuhkan.</p>
-        <button class="donate-btn">
+        <button class="donate-btn" data-category="Kemanusiaan">
           <i class="fas fa-heart"></i>
           Donasi
         </button>
@@ -1478,17 +1629,16 @@
   <!-- About Us -->
   <section id="about-us" class="about-section">
       <div class="about-container">
-          <h2>Tentang Bikinin</h2>
+          <h2>Tentang DonasiYuk</h2>
           <div class="about-content">
               <div class="about-text">
-                  <p>Bikinin adalah platform terdepan yang membantu Anda mewujudkan ide-ide digital menjadi kenyataan. Dengan tim yang berpengalaman di bidang desain dan pengembangan web, kami berkomitmen untuk memberikan solusi yang kreatif, inovatif, dan tepat guna.</p>
-                  <p>Kami percaya bahwa setiap bisnis memiliki cerita unik, dan tugas kami adalah membantu menceritakannya melalui desain yang memukau dan teknologi yang andal.</p>
+                  <p>DonasiYuk adalah platform donasi digital terpercaya yang menghubungkan para dermawan dengan mereka yang membutuhkan bantuan. Kami berkomitmen untuk menciptakan dampak sosial yang positif melalui kemudahan berdonasi secara online.</p>
+                  <p>Dengan teknologi yang aman dan transparan, kami memastikan setiap donasi Anda sampai kepada yang membutuhkan dengan tepat sasaran.</p>
                   <h3>Misi Kami</h3>
-                  <p>Memberdayakan bisnis dengan solusi digital yang mudah, cepat, dan berkualitas tinggi untuk mendorong pertumbuhan di era digital.</p>
+                  <p>Membangun budaya berbagi yang mudah, transparan, dan berdampak nyata bagi masyarakat Indonesia yang membutuhkan.</p>
               </div>
               <div class="about-image">
-                  <!-- Ganti dengan path gambar tim atau workspace Anda -->
-                  <img src="path-ke-gambar-tentang-kami.jpg" alt="Tim Bikinin">
+                  <img src="https://images.unsplash.com/photo-1551836026-d5c88ac5c4c9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Tim DonasiYuk">
               </div>
           </div>
       </div>
@@ -1498,23 +1648,27 @@
   <section id="contact" class="contact-section">
       <div class="contact-container">
           <h2>Hubungi Kami</h2>
-          <p class="contact-subtitle">Punya pertanyaan atau proyek yang ingin didiskusikan? Silakan tinggalkan pesan!</p>
-          <form class="contact-form">
+          <p class="contact-subtitle">Punya pertanyaan atau ingin berkolaborasi? Silakan tinggalkan pesan!</p>
+          <form class="contact-form" id="contactForm">
               <div class="form-group">
                   <label for="name">Nama Lengkap</label>
                   <input type="text" id="name" name="name" required>
+                  <div class="error-message" id="nameError">Nama harus diisi</div>
               </div>
               <div class="form-group">
                   <label for="email">Email</label>
                   <input type="email" id="email" name="email" required>
+                  <div class="error-message" id="emailError">Email harus valid</div>
               </div>
               <div class="form-group">
                   <label for="subject">Subjek</label>
                   <input type="text" id="subject" name="subject" required>
+                  <div class="error-message" id="subjectError">Subjek harus diisi</div>
               </div>
               <div class="form-group">
                   <label for="message">Pesan</label>
                   <textarea id="message" name="message" rows="5" required></textarea>
+                  <div class="error-message" id="messageError">Pesan harus diisi</div>
               </div>
               <button type="submit" class="submit-btn">Kirim Pesan</button>
           </form>
@@ -1527,27 +1681,27 @@
           <h2>Pertanyaan yang Sering Diajukan (FAQ)</h2>
           <div class="faq-list">
               <div class="faq-item">
-                  <button class="faq-question">Apa saja layanan yang Bikinin sediakan?</button>
+                  <button class="faq-question">Bagaimana cara berdonasi di DonasiYuk?</button>
                   <div class="faq-answer">
-                      <p>Kami menyediakan berbagai layanan digital termasuk pembuatan website, desain UI/UX, pengembangan aplikasi web, dan konsultasi IT.</p>
+                      <p>Anda dapat berdonasi dengan memilih campaign yang ingin didukung, lalu klik tombol "Donasi" dan ikuti langkah-langkahnya. Prosesnya mudah, cepat, dan aman.</p>
                   </div>
               </div>
               <div class="faq-item">
-                  <button class="faq-question">Berapa lama waktu pengerjaan sebuah website?</button>
+                  <button class="faq-question">Apakah donasi saya benar-benar sampai kepada yang membutuhkan?</button>
                   <div class="faq-answer">
-                      <p>Waktu pengerjaan bervariasi tergantung kompleksitas proyek. Website sederhana biasanya selesai dalam 2-3 minggu, sedangkan proyek yang lebih kompleks bisa memakan waktu 1-3 bulan.</p>
+                      <p>Ya, kami memastikan transparansi penyaluran dana. Setiap campaign memiliki laporan penggunaan dana yang dapat diakses oleh para donatur.</p>
                   </div>
               </div>
               <div class="faq-item">
-                  <button class="faq-question">Apakah saya bisa request revisi desain?</button>
+                  <button class="faq-question">Metode pembayaran apa saja yang tersedia?</button>
                   <div class="faq-answer">
-                      <p>Tentu! Kami memberikan beberapa putaran revisi pada tahap desain untuk memastikan hasil akhir sesuai dengan harapan Anda.</p>
+                      <p>Kami mendukung berbagai metode pembayaran termasuk transfer bank, kartu kredit, e-wallet (GoPay, OVO, Dana), dan gerai retail (Alfamart, Indomaret).</p>
                   </div>
               </div>
               <div class="faq-item">
-                  <button class="faq-question">Bagaimana dengan biaya pemeliharaan website?</button>
+                  <button class="faq-question">Bagaimana cara mengajukan campaign donasi?</button>
                   <div class="faq-answer">
-                      <p>Kami menawarkan paket pemeliharaan yang mencakup update, backup, dan dukungan teknis. Biaya bervariasi tergantung kebutuhan website Anda.</p>
+                      <p>Anda dapat mengajukan campaign melalui menu "Pengajuan Donasi" di website kami. Tim kami akan meninjau proposal Anda dan menghubungi dalam 1-3 hari kerja.</p>
                   </div>
               </div>
           </div>
@@ -1599,6 +1753,45 @@
       <p>&copy; 2023 DonasiYuk. All rights reserved.</p>
     </div>
   </footer>
+
+  <!-- Donation Modal -->
+  <div class="modal" id="donationModal">
+    <div class="modal-content">
+      <span class="close-modal" id="closeModal">&times;</span>
+      <div id="modalContent">
+        <h3 class="modal-title" id="modalTitle">Donasi untuk <span id="campaignName"></span></h3>
+        <div class="donation-amounts">
+          <div class="amount-option" data-amount="25000">Rp 25.000</div>
+          <div class="amount-option" data-amount="50000">Rp 50.000</div>
+          <div class="amount-option" data-amount="100000">Rp 100.000</div>
+          <div class="amount-option" data-amount="250000">Rp 250.000</div>
+          <div class="amount-option" data-amount="500000">Rp 500.000</div>
+          <div class="amount-option" data-amount="1000000">Rp 1.000.000</div>
+        </div>
+        <input type="number" class="custom-amount" id="customAmount" placeholder="Jumlah Lainnya (Rp)">
+        <div class="payment-methods">
+          <div class="payment-method selected" data-method="bank">
+            <input type="radio" name="payment" id="bank" checked>
+            <label for="bank">Transfer Bank</label>
+          </div>
+          <div class="payment-method" data-method="credit">
+            <input type="radio" name="payment" id="credit">
+            <label for="credit">Kartu Kredit</label>
+          </div>
+          <div class="payment-method" data-method="ewallet">
+            <input type="radio" name="payment" id="ewallet">
+            <label for="ewallet">E-Wallet</label>
+          </div>
+        </div>
+        <button class="modal-donate-btn" id="confirmDonation">Konfirmasi Donasi</button>
+      </div>
+      <div class="success-message" id="successMessage">
+        <i class="fas fa-check-circle"></i>
+        <h3>Terima Kasih!</h3>
+        <p>Donasi Anda berhasil dikirim. Anda akan menerima email konfirmasi dalam beberapa menit.</p>
+      </div>
+    </div>
+  </div>
 
   <!-- Scroll to top button -->
   <button class="scroll-top" id="scrollTop">
@@ -1782,24 +1975,185 @@
     }
 
     // JavaScript untuk fungsi toggle FAQ
-document.querySelectorAll('.faq-question').forEach(button => {
-    button.addEventListener('click', () => {
-        const faqItem = button.parentNode;
-        const faqAnswer = button.nextElementSibling;
+    document.querySelectorAll('.faq-question').forEach(button => {
+        button.addEventListener('click', () => {
+            const faqItem = button.parentNode;
+            const faqAnswer = button.nextElementSibling;
+            
+            // Tutup semua FAQ lainnya
+            document.querySelectorAll('.faq-answer').forEach(answer => {
+                if (answer !== faqAnswer) {
+                    answer.classList.remove('open');
+                    answer.previousElementSibling.classList.remove('active');
+                }
+            });
+            
+            // Toggle FAQ yang diklik
+            button.classList.toggle('active');
+            faqAnswer.classList.toggle('open');
+        });
+    });
+
+    // Donation Modal Functionality
+    const donationModal = document.getElementById('donationModal');
+    const closeModal = document.getElementById('closeModal');
+    const campaignName = document.getElementById('campaignName');
+    const amountOptions = document.querySelectorAll('.amount-option');
+    const customAmount = document.getElementById('customAmount');
+    const paymentMethods = document.querySelectorAll('.payment-method');
+    const confirmDonation = document.getElementById('confirmDonation');
+    const modalContent = document.getElementById('modalContent');
+    const successMessage = document.getElementById('successMessage');
+
+    let selectedAmount = 0;
+    let selectedPaymentMethod = 'bank';
+
+    // Open modal when donate button is clicked
+    document.querySelectorAll('.donate-btn, .btn-donate').forEach(button => {
+      button.addEventListener('click', (e) => {
+        e.preventDefault();
         
-        // Tutup semua FAQ lainnya
-        document.querySelectorAll('.faq-answer').forEach(answer => {
-            if (answer !== faqAnswer) {
-                answer.classList.remove('open');
-                answer.previousElementSibling.classList.remove('active');
-            }
+        // Get campaign name from data attribute
+        const campaign = button.getAttribute('data-campaign') || button.getAttribute('data-category');
+        campaignName.textContent = campaign;
+        
+        // Reset modal state
+        selectedAmount = 0;
+        customAmount.value = '';
+        amountOptions.forEach(option => option.classList.remove('selected'));
+        paymentMethods.forEach(method => {
+          if (method.getAttribute('data-method') === 'bank') {
+            method.classList.add('selected');
+          } else {
+            method.classList.remove('selected');
+          }
         });
         
-        // Toggle FAQ yang diklik
-        button.classList.toggle('active');
-        faqAnswer.classList.toggle('open');
+        // Show modal
+        donationModal.style.display = 'flex';
+        modalContent.style.display = 'block';
+        successMessage.style.display = 'none';
+      });
     });
-});
+
+    // Close modal
+    closeModal.addEventListener('click', () => {
+      donationModal.style.display = 'none';
+    });
+
+    // Close modal when clicking outside
+    window.addEventListener('click', (e) => {
+      if (e.target === donationModal) {
+        donationModal.style.display = 'none';
+      }
+    });
+
+    // Select amount option
+    amountOptions.forEach(option => {
+      option.addEventListener('click', () => {
+        amountOptions.forEach(opt => opt.classList.remove('selected'));
+        option.classList.add('selected');
+        selectedAmount = option.getAttribute('data-amount');
+        customAmount.value = '';
+      });
+    });
+
+    // Handle custom amount input
+    customAmount.addEventListener('input', () => {
+      amountOptions.forEach(opt => opt.classList.remove('selected'));
+      selectedAmount = customAmount.value;
+    });
+
+    // Select payment method
+    paymentMethods.forEach(method => {
+      method.addEventListener('click', () => {
+        paymentMethods.forEach(m => m.classList.remove('selected'));
+        method.classList.add('selected');
+        selectedPaymentMethod = method.getAttribute('data-method');
+      });
+    });
+
+    // Confirm donation
+    confirmDonation.addEventListener('click', () => {
+      if (!selectedAmount || selectedAmount <= 0) {
+        alert('Silakan pilih atau masukkan jumlah donasi.');
+        return;
+      }
+      
+      // In a real application, you would process the payment here
+      // For demo purposes, we'll just show a success message
+      modalContent.style.display = 'none';
+      successMessage.style.display = 'block';
+      
+      // Close modal after 3 seconds
+      setTimeout(() => {
+        donationModal.style.display = 'none';
+      }, 3000);
+    });
+
+    // Form validation for contact form
+    const contactForm = document.getElementById('contactForm');
+    
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      let isValid = true;
+      
+      // Validate name
+      const nameInput = document.getElementById('name');
+      const nameError = document.getElementById('nameError');
+      if (!nameInput.value.trim()) {
+        nameInput.parentElement.classList.add('error');
+        nameError.style.display = 'block';
+        isValid = false;
+      } else {
+        nameInput.parentElement.classList.remove('error');
+        nameError.style.display = 'none';
+      }
+      
+      // Validate email
+      const emailInput = document.getElementById('email');
+      const emailError = document.getElementById('emailError');
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailInput.value.trim() || !emailRegex.test(emailInput.value)) {
+        emailInput.parentElement.classList.add('error');
+        emailError.style.display = 'block';
+        isValid = false;
+      } else {
+        emailInput.parentElement.classList.remove('error');
+        emailError.style.display = 'none';
+      }
+      
+      // Validate subject
+      const subjectInput = document.getElementById('subject');
+      const subjectError = document.getElementById('subjectError');
+      if (!subjectInput.value.trim()) {
+        subjectInput.parentElement.classList.add('error');
+        subjectError.style.display = 'block';
+        isValid = false;
+      } else {
+        subjectInput.parentElement.classList.remove('error');
+        subjectError.style.display = 'none';
+      }
+      
+      // Validate message
+      const messageInput = document.getElementById('message');
+      const messageError = document.getElementById('messageError');
+      if (!messageInput.value.trim()) {
+        messageInput.parentElement.classList.add('error');
+        messageError.style.display = 'block';
+        isValid = false;
+      } else {
+        messageInput.parentElement.classList.remove('error');
+        messageError.style.display = 'none';
+      }
+      
+      if (isValid) {
+        // In a real application, you would send the form data to a server here
+        alert('Pesan Anda telah berhasil dikirim!');
+        contactForm.reset();
+      }
+    });
   </script>
 </body>
-</html> 
+</html>     
